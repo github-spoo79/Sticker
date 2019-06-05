@@ -82,7 +82,6 @@ namespace HAESticker
         private void pbTrackBall_MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
-            ValueChangeEvent(this.Value, new EventArgs());
         }
 
         private void pbTrackBall_MouseMove(object sender, MouseEventArgs e)
@@ -97,6 +96,7 @@ namespace HAESticker
                     drawTrackBall();
 
                     this.Value = (pbTrackBall.Location.X * 100) / (this.Width - pbTrackBall.Width);
+                    ValueChangeEvent(this.Value, new EventArgs());
                 }
             }
         }

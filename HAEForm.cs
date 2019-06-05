@@ -31,6 +31,8 @@ namespace HAESticker
         private int MINIMUM_HEIGHT = 26;
         private double OPACITY_RATE = 0.01;
 
+
+
         public HAEForm()
         {
             InitializeComponent();
