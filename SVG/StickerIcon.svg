@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.919596"
-     inkscape:cx="217.25029"
-     inkscape:cy="147.63762"
+     inkscape:zoom="3.959798"
+     inkscape:cx="231.9178"
+     inkscape:cy="48.771093"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -56,7 +56,7 @@
      id="layer1">
     <g
        id="g5241"
-       transform="translate(-0.90353819,0.00421943)">
+       transform="translate(-0.9035382)">
       <rect
          inkscape:export-filename="D:\Documents\icon\btnHide.png"
          inkscape:export-ydpi="96"
@@ -78,7 +78,7 @@
     </g>
     <g
        id="g5245"
-       transform="translate(-0.40452554,0.00421943)">
+       transform="translate(-0.4045215)">
       <rect
          inkscape:export-filename="D:\Documents\icon\btnExpand.png"
          inkscape:export-ydpi="96"
@@ -103,7 +103,7 @@
     </g>
     <g
        id="g5237"
-       transform="translate(-1.3789291,-0.01940118)">
+       transform="translate(-1.3789291)">
       <g
          id="g5132">
         <rect
@@ -140,8 +140,7 @@
       </g>
     </g>
     <g
-       id="g5252"
-       transform="translate(0,0.00421943)">
+       id="g5252">
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
@@ -188,155 +187,149 @@
        style="font-style:normal;font-weight:normal;font-size:11.52774429px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.54036301"
        id="text4957" />
     <g
-       id="g5229"
-       transform="translate(-1.3525034,0.01230659)">
+       id="g4904"
+       transform="translate(-0.75361195)">
       <g
-         id="g5163">
-        <rect
-           style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           id="rect5060"
-           width="6.3499999"
-           height="6.3499999"
-           x="49.438282"
-           y="250.50082"
-           inkscape:export-xdpi="96"
-           inkscape:export-ydpi="96"
-           inkscape:export-filename="D:\Documents\icon\btnHolder.png" />
+         transform="translate(-0.59888948)"
+         id="g5229">
         <g
-           transform="rotate(-50.528469,43.498339,258.46169)"
-           id="g5070"
-           inkscape:export-filename="D:\Documents\icon\btnHolder.png"
-           inkscape:export-xdpi="96"
-           inkscape:export-ydpi="96">
+           id="g5163">
           <rect
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.46356234;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-             id="rect5062"
-             width="2.8230097"
-             height="3.5080914"
-             x="51.440193"
-             y="260.51349" />
-          <rect
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-             id="rect5064"
-             width="3.7088914"
-             height="0.76776409"
-             x="50.99725"
-             y="263.30106" />
-          <rect
-             y="260.51349"
-             x="50.997253"
-             height="0.76776409"
-             width="3.7088914"
-             id="rect5066"
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-          <path
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-             d="m 52.597744,263.98612 h 0.507906 l -0.253953,2.16155 z"
-             id="path5068"
-             inkscape:connector-curvature="0"
-             sodipodi:nodetypes="cccc" />
+             inkscape:export-filename="D:\Documents\icon\btnHolder.png"
+             inkscape:export-ydpi="96"
+             inkscape:export-xdpi="96"
+             y="250.50082"
+             x="49.438282"
+             height="6.3499999"
+             width="6.3499999"
+             id="rect5060"
+             style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          <g
+             inkscape:export-ydpi="96"
+             inkscape:export-xdpi="96"
+             inkscape:export-filename="D:\Documents\icon\btnHolder.png"
+             id="g5070"
+             transform="rotate(-50.528469,43.498339,258.46169)">
+            <rect
+               y="260.51349"
+               x="51.440193"
+               height="3.5080914"
+               width="2.8230097"
+               id="rect5062"
+               style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.46356234;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+            <rect
+               y="263.30106"
+               x="50.99725"
+               height="0.76776409"
+               width="3.7088914"
+               id="rect5064"
+               style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+            <rect
+               style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+               id="rect5066"
+               width="3.7088914"
+               height="0.76776409"
+               x="50.997253"
+               y="260.51349" />
+            <path
+               sodipodi:nodetypes="cccc"
+               inkscape:connector-curvature="0"
+               id="path5068"
+               d="m 52.597744,263.98612 h 0.507906 l -0.253953,2.16155 z"
+               style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+          </g>
         </g>
       </g>
     </g>
     <g
-       id="g915"
-       transform="translate(-0.91467286,0.0668335)">
-      <g
-         inkscape:export-ydpi="96"
+       id="g5149"
+       inkscape:export-filename="D:\Documents\icon\btnHideHover.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="translate(-0.91467285)">
+      <rect
+         y="258.16293"
+         x="63.641739"
+         height="6.3499999"
+         width="6.3499999"
+         id="rect5101"
+         style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          inkscape:export-xdpi="96"
-         inkscape:export-filename="D:\Documents\icon\btnHideHover.png"
-         id="g5149">
-        <rect
+         inkscape:export-ydpi="96" />
+      <path
+         style="fill:none;stroke:#ffffff;stroke-width:0.46905613;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 64.832364,262.99609 H 68.9901"
+         id="path5103"
+         inkscape:connector-curvature="0"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <g
+       id="g5153"
+       inkscape:export-filename="D:\Documents\icon\btnExpandHover.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="translate(-0.41008479)">
+      <rect
+         style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5105"
+         width="6.3499999"
+         height="6.3499999"
+         x="70.468933"
+         y="258.16293"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <rect
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.39568001;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5107"
+         width="3.3084867"
+         height="3.3084867"
+         x="71.989693"
+         y="259.68369"
+         ry="0"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+    <g
+       id="g5145"
+       inkscape:export-filename="D:\Documents\icon\btnCloseHover.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="translate(-1.3956351)">
+      <rect
+         style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5099"
+         width="6.3499999"
+         height="6.3499999"
+         x="56.79092"
+         y="258.18655"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <g
+         id="g5117"
+         transform="matrix(0.76148553,0,0,0.74507288,14.30274,72.330947)">
+        <g
            inkscape:export-ydpi="96"
            inkscape:export-xdpi="96"
-           style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           id="rect5101"
-           width="6.3499999"
-           height="6.3499999"
-           x="63.641739"
-           y="258.16293" />
+           transform="translate(-0.05851229,-0.09242331)"
+           id="g5113">
+          <path
+             inkscape:connector-curvature="0"
+             id="path5111"
+             d="m 62.251691,251.57975 -4.454517,4.44041"
+             style="fill:#ffffff;stroke:#ffffff;stroke-width:0.5291667;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
         <path
            inkscape:export-ydpi="96"
            inkscape:export-xdpi="96"
            inkscape:connector-curvature="0"
-           id="path5103"
-           d="M 64.832364,262.99609 H 68.9901"
-           style="fill:none;stroke:#ffffff;stroke-width:0.46905613;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+           id="path5115"
+           d="m 57.738662,251.48733 4.454517,4.44041"
+           style="fill:#ffffff;stroke:#ffffff;stroke-width:0.5291667;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       </g>
     </g>
     <g
-       id="g920"
-       transform="translate(-0.41008883,0.0668335)">
-      <g
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="D:\Documents\icon\btnExpandHover.png"
-         id="g5153">
-        <rect
-           inkscape:export-ydpi="96"
-           inkscape:export-xdpi="96"
-           y="258.16293"
-           x="70.468933"
-           height="6.3499999"
-           width="6.3499999"
-           id="rect5105"
-           style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-        <rect
-           inkscape:export-ydpi="96"
-           inkscape:export-xdpi="96"
-           ry="0"
-           y="259.68369"
-           x="71.989693"
-           height="3.3084867"
-           width="3.3084867"
-           id="rect5107"
-           style="opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.39568001;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-      </g>
-    </g>
-    <g
-       id="g910"
-       transform="translate(-1.3956351,0.04321289)">
-      <g
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         inkscape:export-filename="D:\Documents\icon\btnCloseHover.png"
-         id="g5145">
-        <rect
-           inkscape:export-ydpi="96"
-           inkscape:export-xdpi="96"
-           y="258.18655"
-           x="56.79092"
-           height="6.3499999"
-           width="6.3499999"
-           id="rect5099"
-           style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-        <g
-           transform="matrix(0.76148553,0,0,0.74507288,14.30274,72.330947)"
-           id="g5117">
-          <g
-             id="g5113"
-             transform="translate(-0.05851229,-0.09242331)"
-             inkscape:export-xdpi="96"
-             inkscape:export-ydpi="96">
-            <path
-               style="fill:#ffffff;stroke:#ffffff;stroke-width:0.5291667;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-               d="m 62.251691,251.57975 -4.454517,4.44041"
-               id="path5111"
-               inkscape:connector-curvature="0" />
-          </g>
-          <path
-             style="fill:#ffffff;stroke:#ffffff;stroke-width:0.5291667;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-             d="m 57.738662,251.48733 4.454517,4.44041"
-             id="path5115"
-             inkscape:connector-curvature="0"
-             inkscape:export-xdpi="96"
-             inkscape:export-ydpi="96" />
-        </g>
-      </g>
-    </g>
-    <g
-       id="g925"
-       transform="translate(0,0.0668335)">
+       id="g4915">
       <rect
          inkscape:export-filename="D:\Documents\icon\btnOriginalHover.png"
          y="258.16293"
@@ -371,62 +364,59 @@
          inkscape:export-ydpi="96" />
     </g>
     <g
-       id="g902"
-       transform="translate(-1.233034,-0.0668335)">
-      <g
-         inkscape:export-ydpi="96"
+       id="g5191"
+       inkscape:export-filename="D:\Documents\icon\btnHolderOver.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       transform="translate(-1.233032)">
+      <rect
+         style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect5165"
+         width="6.3499999"
+         height="6.3499999"
+         x="49.296539"
+         y="258.2966"
          inkscape:export-xdpi="96"
-         inkscape:export-filename="D:\Documents\icon\btnHolderOver.png"
-         id="g5191">
+         inkscape:export-ydpi="96"
+         inkscape:export-filename="D:\Documents\icon\btnHolder.png" />
+      <g
+         transform="rotate(-50.528469,51.686836,262.50974)"
+         id="g5175"
+         inkscape:export-filename="D:\Documents\icon\btnHolder.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96">
         <rect
-           inkscape:export-filename="D:\Documents\icon\btnHolder.png"
-           inkscape:export-ydpi="96"
-           inkscape:export-xdpi="96"
-           y="258.2966"
-           x="49.296539"
-           height="6.3499999"
-           width="6.3499999"
-           id="rect5165"
-           style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-        <g
-           inkscape:export-ydpi="96"
-           inkscape:export-xdpi="96"
-           inkscape:export-filename="D:\Documents\icon\btnHolder.png"
-           id="g5175"
-           transform="rotate(-50.528469,51.686836,262.50974)">
-          <rect
-             y="260.51349"
-             x="51.440193"
-             height="3.5080914"
-             width="2.8230097"
-             id="rect5167"
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.46356234;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-          <rect
-             y="263.30106"
-             x="50.99725"
-             height="0.76776409"
-             width="3.7088914"
-             id="rect5169"
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-          <rect
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-             id="rect5171"
-             width="3.7088914"
-             height="0.76776409"
-             x="50.997253"
-             y="260.51349" />
-          <path
-             sodipodi:nodetypes="cccc"
-             inkscape:connector-curvature="0"
-             id="path5173"
-             d="m 52.597744,263.98612 h 0.507906 l -0.253953,2.16155 z"
-             style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-        </g>
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.46356234;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect5167"
+           width="2.8230097"
+           height="3.5080914"
+           x="51.440193"
+           y="260.51349" />
+        <rect
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect5169"
+           width="3.7088914"
+           height="0.76776409"
+           x="50.99725"
+           y="263.30106" />
+        <rect
+           y="260.51349"
+           x="50.997253"
+           height="0.76776409"
+           width="3.7088914"
+           id="rect5171"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 52.597744,263.98612 h 0.507906 l -0.253953,2.16155 z"
+           id="path5173"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
       </g>
     </g>
     <g
-       id="g893"
-       transform="translate(-0.92261218,-0.03137207)">
+       id="g4910"
+       transform="translate(-0.92261003)">
       <rect
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
@@ -469,52 +459,55 @@
          inkscape:export-ydpi="96" />
     </g>
     <g
-       id="g885"
-       transform="translate(-0.94201653,4.9628547e-4)">
-      <rect
-         inkscape:export-ydpi="96"
-         inkscape:export-xdpi="96"
-         y="250.51263"
-         x="41.701584"
-         height="6.3499999"
-         width="6.3499999"
-         id="rect877"
-         style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         inkscape:export-filename="D:\Documents\icon\btnHolding.png" />
-      <rect
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.46356234;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="rect879"
-         width="2.8230097"
-         height="3.5080914"
-         x="43.46508"
-         y="251.92886"
-         inkscape:export-filename="D:\Documents\icon\btnHolding.png"
-         inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96" />
-      <rect
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="rect881"
-         width="3.7088914"
-         height="0.76776409"
-         x="43.022137"
-         y="254.71643"
-         inkscape:export-filename="D:\Documents\icon\btnHolding.png"
-         inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96" />
-      <rect
-         y="251.92886"
-         x="43.022141"
-         height="0.76776409"
-         width="3.7088914"
-         id="rect883"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         inkscape:export-filename="D:\Documents\icon\btnHolding.png"
-         inkscape:export-xdpi="96"
-         inkscape:export-ydpi="96" />
+       id="g4894"
+       transform="translate(-0.42229738)">
+      <g
+         transform="translate(-0.51971726,-0.01890489)"
+         id="g885">
+        <rect
+           inkscape:export-filename="D:\Documents\icon\btnHolding.png"
+           style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect877"
+           width="6.3499999"
+           height="6.3499999"
+           x="41.701584"
+           y="250.51263"
+           inkscape:export-xdpi="96"
+           inkscape:export-ydpi="96" />
+        <rect
+           inkscape:export-ydpi="96"
+           inkscape:export-xdpi="96"
+           inkscape:export-filename="D:\Documents\icon\btnHolding.png"
+           y="251.92886"
+           x="43.46508"
+           height="3.5080914"
+           width="2.8230097"
+           id="rect879"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.46356234;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <rect
+           inkscape:export-ydpi="96"
+           inkscape:export-xdpi="96"
+           inkscape:export-filename="D:\Documents\icon\btnHolding.png"
+           y="254.71643"
+           x="43.022137"
+           height="0.76776409"
+           width="3.7088914"
+           id="rect881"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+        <rect
+           inkscape:export-ydpi="96"
+           inkscape:export-xdpi="96"
+           inkscape:export-filename="D:\Documents\icon\btnHolding.png"
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.52916664;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="rect883"
+           width="3.7088914"
+           height="0.76776409"
+           x="43.022141"
+           y="251.92886" />
+      </g>
     </g>
     <g
-       id="g934"
-       transform="translate(0,4.9628547e-4)">
+       id="g4887">
       <rect
          inkscape:export-filename="D:\Documents\icon\btnHolding.png"
          style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -577,8 +570,7 @@
     <g
        id="g4850"
        inkscape:export-xdpi="96"
-       inkscape:export-ydpi="96"
-       transform="translate(0,-0.01696777)">
+       inkscape:export-ydpi="96">
       <rect
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
@@ -638,5 +630,21 @@
          id="path4791"
          inkscape:connector-curvature="0" />
     </g>
+    <path
+       style="opacity:1;fill:#213653;fill-opacity:1;stroke:none;stroke-width:0.16819584;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 85.993971,259.04059 h 2.116667 v 2.11666 1.05834 l -1.058333,1.05833 -1.058334,-1.05833 v -1.05834 z"
+       id="rect4875"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <path
+       sodipodi:nodetypes="cccccccc"
+       inkscape:connector-curvature="0"
+       id="path4878"
+       d="m 86.027379,251.62386 h 2.116667 v 2.11666 1.05834 l -1.058333,1.05833 -1.058334,-1.05833 v -1.05834 z"
+       style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.16819584;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
   </g>
 </svg>
