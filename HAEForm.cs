@@ -20,7 +20,7 @@ namespace HAESticker
         private bool resizingRight;
         private int border = 3;
         private Size previousSize;
-        private Point previousLocation;
+        private Point previousLocation ;
         private Size previousFoldingSize;
         private Point offset;
         private bool maximizied = false;
