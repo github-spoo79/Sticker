@@ -47,6 +47,8 @@ namespace HAESticker
             pbTrackBall.MouseLeave += pbTrackBall_MouseLeave;
             pbTrackBall.MouseMove += pbTrackBall_MouseMove;
             pbTrackBall.MouseUp += pbTrackBall_MouseUp;
+
+            this.MouseHover += pbTrackBall_MouseHover;
         }
 
         private void drawTrackBall()

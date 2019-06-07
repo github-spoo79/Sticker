@@ -65,10 +65,10 @@
             // 
             this.pnlBody.Controls.Add(this.rtbMemo);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 24);
+            this.pnlBody.Location = new System.Drawing.Point(2, 24);
             this.pnlBody.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(298, 250);
+            this.pnlBody.Size = new System.Drawing.Size(294, 248);
             this.pnlBody.TabIndex = 0;
             // 
             // rtbMemo
@@ -77,7 +77,7 @@
             this.rtbMemo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbMemo.Location = new System.Drawing.Point(0, 0);
             this.rtbMemo.Name = "rtbMemo";
-            this.rtbMemo.Size = new System.Drawing.Size(298, 250);
+            this.rtbMemo.Size = new System.Drawing.Size(294, 248);
             this.rtbMemo.TabIndex = 0;
             this.rtbMemo.Text = "";
             // 
@@ -88,10 +88,10 @@
             this.pnlCaption.Controls.Add(this.tpnlLogo);
             this.pnlCaption.Controls.Add(this.tpnlFormBtn);
             this.pnlCaption.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlCaption.Location = new System.Drawing.Point(0, 0);
+            this.pnlCaption.Location = new System.Drawing.Point(2, 0);
             this.pnlCaption.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCaption.Name = "pnlCaption";
-            this.pnlCaption.Size = new System.Drawing.Size(298, 24);
+            this.pnlCaption.Size = new System.Drawing.Size(294, 24);
             this.pnlCaption.TabIndex = 0;
             // 
             // pnlFormTitle
@@ -103,7 +103,7 @@
             this.pnlFormTitle.Location = new System.Drawing.Point(24, 0);
             this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.pnlFormTitle.Name = "pnlFormTitle";
-            this.pnlFormTitle.Size = new System.Drawing.Size(202, 24);
+            this.pnlFormTitle.Size = new System.Drawing.Size(198, 24);
             this.pnlFormTitle.TabIndex = 3;
             // 
             // lblFormTitle
@@ -114,7 +114,7 @@
             this.lblFormTitle.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lblFormTitle.Name = "lblFormTitle";
             this.lblFormTitle.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblFormTitle.Size = new System.Drawing.Size(202, 24);
+            this.lblFormTitle.Size = new System.Drawing.Size(198, 24);
             this.lblFormTitle.TabIndex = 0;
             this.lblFormTitle.Text = "Sticker Title";
             this.lblFormTitle.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -159,7 +159,7 @@
             this.tpnlFormBtn.Controls.Add(this.pbBtnExpand, 1, 0);
             this.tpnlFormBtn.Controls.Add(this.pbBtnHide, 0, 0);
             this.tpnlFormBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tpnlFormBtn.Location = new System.Drawing.Point(226, 0);
+            this.tpnlFormBtn.Location = new System.Drawing.Point(222, 0);
             this.tpnlFormBtn.Margin = new System.Windows.Forms.Padding(0);
             this.tpnlFormBtn.Name = "tpnlFormBtn";
             this.tpnlFormBtn.RowCount = 1;
@@ -218,19 +218,22 @@
             // 
             // tblSticker
             // 
-            this.tblSticker.ColumnCount = 1;
-            this.tblSticker.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblSticker.Controls.Add(this.pnlCaption, 0, 0);
-            this.tblSticker.Controls.Add(this.pnlBody, 0, 1);
-            this.tblSticker.Controls.Add(this.pnlBottom, 0, 2);
+            this.tblSticker.ColumnCount = 3;
+            this.tblSticker.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tblSticker.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblSticker.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tblSticker.Controls.Add(this.pnlCaption, 1, 0);
+            this.tblSticker.Controls.Add(this.pnlBody, 1, 1);
+            this.tblSticker.Controls.Add(this.pnlBottom, 1, 2);
             this.tblSticker.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblSticker.Location = new System.Drawing.Point(1, 1);
             this.tblSticker.Margin = new System.Windows.Forms.Padding(0);
             this.tblSticker.Name = "tblSticker";
-            this.tblSticker.RowCount = 3;
+            this.tblSticker.RowCount = 4;
             this.tblSticker.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tblSticker.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblSticker.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tblSticker.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tblSticker.Size = new System.Drawing.Size(298, 298);
             this.tblSticker.TabIndex = 0;
             // 
@@ -238,10 +241,10 @@
             // 
             this.pnlBottom.Controls.Add(this.tblSetting);
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBottom.Location = new System.Drawing.Point(0, 274);
+            this.pnlBottom.Location = new System.Drawing.Point(2, 272);
             this.pnlBottom.Margin = new System.Windows.Forms.Padding(0);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(298, 24);
+            this.pnlBottom.Size = new System.Drawing.Size(294, 24);
             this.pnlBottom.TabIndex = 1;
             // 
             // tblSetting
@@ -256,13 +259,13 @@
             this.tblSetting.Name = "tblSetting";
             this.tblSetting.RowCount = 1;
             this.tblSetting.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblSetting.Size = new System.Drawing.Size(298, 24);
+            this.tblSetting.Size = new System.Drawing.Size(294, 24);
             this.tblSetting.TabIndex = 0;
             // 
             // pbTrash
             // 
             this.pbTrash.Image = global::HAESticker.Properties.Resources.btnTrash;
-            this.pbTrash.Location = new System.Drawing.Point(274, 0);
+            this.pbTrash.Location = new System.Drawing.Point(270, 0);
             this.pbTrash.Margin = new System.Windows.Forms.Padding(0);
             this.pbTrash.Name = "pbTrash";
             this.pbTrash.Size = new System.Drawing.Size(24, 24);
@@ -277,7 +280,7 @@
             this.tbarOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbarOpacity.Location = new System.Drawing.Point(3, 3);
             this.tbarOpacity.Name = "tbarOpacity";
-            this.tbarOpacity.Size = new System.Drawing.Size(268, 18);
+            this.tbarOpacity.Size = new System.Drawing.Size(264, 18);
             this.tbarOpacity.TabIndex = 2;
             this.tbarOpacity.Value = 50;
             this.tbarOpacity.ValueChangeEvent += new System.EventHandler(this.tbarOpacity_ValueChangeEvent);

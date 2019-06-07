@@ -18,7 +18,7 @@ namespace HAESticker
         private bool resizingDown;
         private bool resizingLeft;
         private bool resizingRight;
-        private int border = 3;
+        private int border = 4;
         private Size previousSize;
         private Point previousLocation ;
         private Size previousFoldingSize;
@@ -42,6 +42,10 @@ namespace HAESticker
 
         private void initEventHandler()
         {
+            tblSticker.MouseDown += HAEForm_MouseDown;
+            tblSticker.MouseUp += HAEForm_MouseUp;
+            tblSticker.MouseMove += HAEForm_MouseMove;
+
             pnlCaption.MouseDown += HAEForm_MouseDown;
             pnlCaption.MouseUp += HAEForm_MouseUp;
             pnlCaption.MouseMove += HAEForm_MouseMove;
