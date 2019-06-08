@@ -53,6 +53,8 @@ namespace HAESticker
             lblFormTitle.MouseDown += HAEForm_MouseDown;
             lblFormTitle.MouseUp += HAEForm_MouseUp;
             lblFormTitle.MouseMove += HAEForm_MouseMove;
+
+            tbarOpacity.redrawTrackBall();
         }
 
         private void HAEForm_MouseDown(object sender, MouseEventArgs e)
@@ -361,13 +363,13 @@ namespace HAESticker
             this.Cursor = Cursors.Default;
         }
 
-        private void tbOpacity_MouseLeave(object sender, EventArgs e)
+        private void tbarOpacity_MouseLeave(object sender, EventArgs e)
         {
         }
 
-        private void tbOpacity_ValueChanged(object sender, EventArgs e)
+        private void tbarOpacity_ValueChanged(object sender, EventArgs e)
         {
-            //this.Opacity = tbOpacity.Value * OPACITY_RATE;
+            this.Opacity = tbarOpacity.Value * OPACITY_RATE;
         }
 
         private void pbTrash_Click(object sender, EventArgs e)

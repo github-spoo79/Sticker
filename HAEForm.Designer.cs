@@ -283,7 +283,7 @@
             this.tbarOpacity.Size = new System.Drawing.Size(264, 18);
             this.tbarOpacity.TabIndex = 2;
             this.tbarOpacity.Value = 50;
-            this.tbarOpacity.ValueChangeEvent += new System.EventHandler(this.tbarOpacity_ValueChangeEvent);
+            this.tbarOpacity.ValueChanged += new System.EventHandler(this.tbarOpacity_ValueChanged);
             // 
             // HAEForm
             // 

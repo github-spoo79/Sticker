@@ -14,11 +14,11 @@ namespace HAESticker
     {
         bool dragging = false;
         int trackLineY = 8;
-        int val = 50;
+        int val = 100;
         Point offset = new Point();
         Color trackColor = Color.LightGray;
 
-        public event EventHandler ValueChangeEvent;
+        public event EventHandler ValueChanged;
 
         public int Value
         {
@@ -38,6 +38,8 @@ namespace HAESticker
             InitializeComponent();
 
             initEventHandler();
+
+            //redrawTrackBall();
         }
 
         private void initEventHandler()
@@ -98,7 +100,7 @@ namespace HAESticker
                     drawTrackBall();
 
                     this.Value = (pbTrackBall.Location.X * 100) / (this.Width - pbTrackBall.Width);
-                    ValueChangeEvent(this.Value, new EventArgs());
+                    ValueChanged(this.Value, new EventArgs());
                 }
             }
         }
@@ -106,6 +108,12 @@ namespace HAESticker
         private void HAETrackBar_Paint(object sender, PaintEventArgs e)
         {
             drawTrackBall();
+        }
+
+        public void redrawTrackBall()
+        {
+            pbTrackBall.Location = new Point(((this.Width - pbTrackBall.Width) * Value) / 100, 0);
+            ValueChanged(this.Value, new EventArgs());
         }
     }
 }
