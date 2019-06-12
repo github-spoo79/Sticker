@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HAEFormPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HAEFormPopup.Designer.cs">
+      <DependentUpon>HAEFormPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="HAESQLiteHelper.cs" />
     <Compile Include="HAEForm.cs">
       <SubType>Form</SubType>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="HAEForm.resx">
       <DependentUpon>HAEForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HAEFormPopup.resx">
+      <DependentUpon>HAEFormPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HAETestForm.resx">
       <DependentUpon>HAETestForm.cs</DependentUpon>
@@ -105,58 +114,98 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnClose.png" />
+    <None Include="Resources\btnClose.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnCloseHover.png" />
+    <None Include="Resources\btnCloseHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnExpand.png" />
+    <None Include="Resources\btnExpand.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnExpandHover.png" />
+    <None Include="Resources\btnExpandHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnHide.png" />
+    <None Include="Resources\btnHide.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnHideHover.png" />
+    <None Include="Resources\btnHideHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnHolder.png" />
+    <None Include="Resources\btnHolder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnHolderOver.png" />
+    <None Include="Resources\btnHolderOver.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnHolding.png" />
+    <None Include="Resources\btnHolding.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnHoldingOver.png" />
+    <None Include="Resources\btnHoldingOver.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnOriginal.png" />
+    <None Include="Resources\btnOriginal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnOriginalHover.png" />
+    <None Include="Resources\btnOriginalHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnTrash.png" />
+    <None Include="Resources\btnTrash.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnTrashHover.png" />
+    <None Include="Resources\btnTrashHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnTrackBall.png" />
+    <None Include="Resources\btnTrackBall.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\btnTrackBallHover.png" />
+    <None Include="Resources\btnTrackBallHover.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="SVG\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="dll\System.Data.SQLite.dll" />
+    <Content Include="dll\System.Data.SQLite.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\notiInfo.png" />
+    <None Include="Resources\notiAlert.png" />
+    <None Include="Resources\notiAsk.png" />
+    <None Include="Resources\btnColorHover.png" />
+    <None Include="Resources\btnColor.png" />
+    <Content Include="SVG\StickerIcon.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

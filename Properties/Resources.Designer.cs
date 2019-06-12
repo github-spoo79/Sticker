@@ -83,6 +83,26 @@ namespace HAESticker.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap btnColor {
+            get {
+                object obj = ResourceManager.GetObject("btnColor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnColorHover {
+            get {
+                object obj = ResourceManager.GetObject("btnColorHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap btnExpand {
             get {
                 object obj = ResourceManager.GetObject("btnExpand", resourceCulture);
@@ -216,6 +236,36 @@ namespace HAESticker.Properties {
         internal static System.Drawing.Bitmap btnTrashHover {
             get {
                 object obj = ResourceManager.GetObject("btnTrashHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap notiAlert {
+            get {
+                object obj = ResourceManager.GetObject("notiAlert", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap notiAsk {
+            get {
+                object obj = ResourceManager.GetObject("notiAsk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap notiInfo {
+            get {
+                object obj = ResourceManager.GetObject("notiInfo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

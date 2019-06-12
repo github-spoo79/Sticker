@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.rtbMemo = new System.Windows.Forms.RichTextBox();
             this.pnlCaption = new System.Windows.Forms.Panel();
             this.pnlFormTitle = new System.Windows.Forms.Panel();
             this.lblFormTitle = new System.Windows.Forms.Label();
             this.tpnlLogo = new System.Windows.Forms.TableLayoutPanel();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.tpnlFormBtn = new System.Windows.Forms.TableLayoutPanel();
-            this.pbBtnClose = new System.Windows.Forms.PictureBox();
-            this.pbBtnExpand = new System.Windows.Forms.PictureBox();
-            this.pbBtnHide = new System.Windows.Forms.PictureBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tblSticker = new System.Windows.Forms.TableLayoutPanel();
             this.pnlBottom = new System.Windows.Forms.Panel();
             this.tblSetting = new System.Windows.Forms.TableLayoutPanel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.pbBtnClose = new System.Windows.Forms.PictureBox();
+            this.pbBtnExpand = new System.Windows.Forms.PictureBox();
+            this.pbBtnHide = new System.Windows.Forms.PictureBox();
             this.pbTrash = new System.Windows.Forms.PictureBox();
             this.tbarOpacity = new HAESticker.HAETrackBar();
             this.pnlBody.SuspendLayout();
             this.pnlCaption.SuspendLayout();
             this.pnlFormTitle.SuspendLayout();
             this.tpnlLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.tpnlFormBtn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnExpand)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnHide)).BeginInit();
             this.tblSticker.SuspendLayout();
             this.pnlBottom.SuspendLayout();
             this.tblSetting.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnExpand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnHide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,20 +133,6 @@
             this.tpnlLogo.Size = new System.Drawing.Size(24, 24);
             this.tpnlLogo.TabIndex = 2;
             // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = global::HAESticker.Properties.Resources.btnHolder;
-            this.pbLogo.Location = new System.Drawing.Point(0, 0);
-            this.pbLogo.Margin = new System.Windows.Forms.Padding(0);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(24, 24);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbLogo.TabIndex = 2;
-            this.pbLogo.TabStop = false;
-            this.pbLogo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbLogo_MouseClick);
-            this.pbLogo.MouseLeave += new System.EventHandler(this.pbLogo_MouseLeave);
-            this.pbLogo.MouseHover += new System.EventHandler(this.pbLogo_MouseHover);
-            // 
             // tpnlFormBtn
             // 
             this.tpnlFormBtn.ColumnCount = 3;
@@ -166,55 +150,6 @@
             this.tpnlFormBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tpnlFormBtn.Size = new System.Drawing.Size(72, 24);
             this.tpnlFormBtn.TabIndex = 1;
-            // 
-            // pbBtnClose
-            // 
-            this.pbBtnClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbBtnClose.Image = global::HAESticker.Properties.Resources.btnClose;
-            this.pbBtnClose.InitialImage = null;
-            this.pbBtnClose.Location = new System.Drawing.Point(48, 0);
-            this.pbBtnClose.Margin = new System.Windows.Forms.Padding(0);
-            this.pbBtnClose.Name = "pbBtnClose";
-            this.pbBtnClose.Size = new System.Drawing.Size(24, 24);
-            this.pbBtnClose.TabIndex = 0;
-            this.pbBtnClose.TabStop = false;
-            this.pbBtnClose.Click += new System.EventHandler(this.pbBtnClose_Click);
-            this.pbBtnClose.MouseLeave += new System.EventHandler(this.pbBtnClose_MouseLeave);
-            this.pbBtnClose.MouseHover += new System.EventHandler(this.pbBtnClose_MouseHover);
-            // 
-            // pbBtnExpand
-            // 
-            this.pbBtnExpand.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbBtnExpand.Image = global::HAESticker.Properties.Resources.btnExpand;
-            this.pbBtnExpand.Location = new System.Drawing.Point(24, 0);
-            this.pbBtnExpand.Margin = new System.Windows.Forms.Padding(0);
-            this.pbBtnExpand.Name = "pbBtnExpand";
-            this.pbBtnExpand.Size = new System.Drawing.Size(24, 24);
-            this.pbBtnExpand.TabIndex = 1;
-            this.pbBtnExpand.TabStop = false;
-            this.pbBtnExpand.Click += new System.EventHandler(this.pbBtnExpand_Click);
-            this.pbBtnExpand.MouseLeave += new System.EventHandler(this.pbBtnExpand_MouseLeave);
-            this.pbBtnExpand.MouseHover += new System.EventHandler(this.pbBtnExpand_MouseHover);
-            // 
-            // pbBtnHide
-            // 
-            this.pbBtnHide.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbBtnHide.Image = global::HAESticker.Properties.Resources.btnHide;
-            this.pbBtnHide.Location = new System.Drawing.Point(0, 0);
-            this.pbBtnHide.Margin = new System.Windows.Forms.Padding(0);
-            this.pbBtnHide.Name = "pbBtnHide";
-            this.pbBtnHide.Size = new System.Drawing.Size(24, 24);
-            this.pbBtnHide.TabIndex = 2;
-            this.pbBtnHide.TabStop = false;
-            this.pbBtnHide.Click += new System.EventHandler(this.pbBtnHide_Click);
-            this.pbBtnHide.MouseLeave += new System.EventHandler(this.pbBtnHide_MouseLeave);
-            this.pbBtnHide.MouseHover += new System.EventHandler(this.pbBtnHide_MouseHover);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // tblSticker
             // 
@@ -262,6 +197,63 @@
             this.tblSetting.Size = new System.Drawing.Size(294, 24);
             this.tblSetting.TabIndex = 0;
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = global::HAESticker.Properties.Resources.btnHolder;
+            this.pbLogo.Location = new System.Drawing.Point(0, 0);
+            this.pbLogo.Margin = new System.Windows.Forms.Padding(0);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(24, 24);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbLogo.TabIndex = 2;
+            this.pbLogo.TabStop = false;
+            this.pbLogo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbLogo_MouseClick);
+            this.pbLogo.MouseLeave += new System.EventHandler(this.pbLogo_MouseLeave);
+            this.pbLogo.MouseHover += new System.EventHandler(this.pbLogo_MouseHover);
+            // 
+            // pbBtnClose
+            // 
+            this.pbBtnClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbBtnClose.Image = global::HAESticker.Properties.Resources.btnClose;
+            this.pbBtnClose.InitialImage = null;
+            this.pbBtnClose.Location = new System.Drawing.Point(48, 0);
+            this.pbBtnClose.Margin = new System.Windows.Forms.Padding(0);
+            this.pbBtnClose.Name = "pbBtnClose";
+            this.pbBtnClose.Size = new System.Drawing.Size(24, 24);
+            this.pbBtnClose.TabIndex = 0;
+            this.pbBtnClose.TabStop = false;
+            this.pbBtnClose.Click += new System.EventHandler(this.pbBtnClose_Click);
+            this.pbBtnClose.MouseLeave += new System.EventHandler(this.pbBtnClose_MouseLeave);
+            this.pbBtnClose.MouseHover += new System.EventHandler(this.pbBtnClose_MouseHover);
+            // 
+            // pbBtnExpand
+            // 
+            this.pbBtnExpand.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbBtnExpand.Image = global::HAESticker.Properties.Resources.btnExpand;
+            this.pbBtnExpand.Location = new System.Drawing.Point(24, 0);
+            this.pbBtnExpand.Margin = new System.Windows.Forms.Padding(0);
+            this.pbBtnExpand.Name = "pbBtnExpand";
+            this.pbBtnExpand.Size = new System.Drawing.Size(24, 24);
+            this.pbBtnExpand.TabIndex = 1;
+            this.pbBtnExpand.TabStop = false;
+            this.pbBtnExpand.Click += new System.EventHandler(this.pbBtnExpand_Click);
+            this.pbBtnExpand.MouseLeave += new System.EventHandler(this.pbBtnExpand_MouseLeave);
+            this.pbBtnExpand.MouseHover += new System.EventHandler(this.pbBtnExpand_MouseHover);
+            // 
+            // pbBtnHide
+            // 
+            this.pbBtnHide.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbBtnHide.Image = global::HAESticker.Properties.Resources.btnHide;
+            this.pbBtnHide.Location = new System.Drawing.Point(0, 0);
+            this.pbBtnHide.Margin = new System.Windows.Forms.Padding(0);
+            this.pbBtnHide.Name = "pbBtnHide";
+            this.pbBtnHide.Size = new System.Drawing.Size(24, 24);
+            this.pbBtnHide.TabIndex = 2;
+            this.pbBtnHide.TabStop = false;
+            this.pbBtnHide.Click += new System.EventHandler(this.pbBtnHide_Click);
+            this.pbBtnHide.MouseLeave += new System.EventHandler(this.pbBtnHide_MouseLeave);
+            this.pbBtnHide.MouseHover += new System.EventHandler(this.pbBtnHide_MouseHover);
+            // 
             // pbTrash
             // 
             this.pbTrash.Image = global::HAESticker.Properties.Resources.btnTrash;
@@ -272,6 +264,7 @@
             this.pbTrash.TabIndex = 1;
             this.pbTrash.TabStop = false;
             this.pbTrash.Click += new System.EventHandler(this.pbTrash_Click);
+            this.pbTrash.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbTrash_MouseDown);
             this.pbTrash.MouseLeave += new System.EventHandler(this.pbTrash_MouseLeave);
             this.pbTrash.MouseHover += new System.EventHandler(this.pbTrash_MouseHover);
             // 
@@ -282,7 +275,7 @@
             this.tbarOpacity.Name = "tbarOpacity";
             this.tbarOpacity.Size = new System.Drawing.Size(264, 18);
             this.tbarOpacity.TabIndex = 2;
-            this.tbarOpacity.Value = 50;
+            this.tbarOpacity.Value = 100;
             this.tbarOpacity.ValueChanged += new System.EventHandler(this.tbarOpacity_ValueChanged);
             // 
             // HAEForm
@@ -297,6 +290,8 @@
             this.Padding = new System.Windows.Forms.Padding(1);
             this.ShowInTaskbar = false;
             this.Text = "Form1";
+            this.Activated += new System.EventHandler(this.HAEForm_Activated);
+            this.Deactivate += new System.EventHandler(this.HAEForm_Deactivate);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HAEForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.HAEForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.HAEForm_MouseUp);
@@ -306,14 +301,14 @@
             this.pnlFormTitle.ResumeLayout(false);
             this.tpnlLogo.ResumeLayout(false);
             this.tpnlLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.tpnlFormBtn.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnExpand)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnHide)).EndInit();
             this.tblSticker.ResumeLayout(false);
             this.pnlBottom.ResumeLayout(false);
             this.tblSetting.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnExpand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnHide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).EndInit();
             this.ResumeLayout(false);
 
@@ -327,7 +322,6 @@
         private System.Windows.Forms.PictureBox pbBtnClose;
         private System.Windows.Forms.PictureBox pbBtnExpand;
         private System.Windows.Forms.PictureBox pbBtnHide;
-        private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.TableLayoutPanel tpnlLogo;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Panel pnlFormTitle;

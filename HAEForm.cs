@@ -218,6 +218,8 @@ namespace HAESticker
                     resizingRight = false;
                 }
             }
+
+            tbarOpacity.redrawTrackBall();
         }
 
         private void pbBtnClose_Click(object sender, EventArgs e)
@@ -239,11 +241,13 @@ namespace HAESticker
                 pbBtnExpand.Image = Properties.Resources.btnOriginal;
                 maximizied = true;
             }
+            tbarOpacity.redrawTrackBall();
         }
 
         private void pbBtnHide_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+            tbarOpacity.redrawTrackBall();
         }
 
         private void pbBtnClose_MouseHover(object sender, EventArgs e)
@@ -377,6 +381,12 @@ namespace HAESticker
 
         }
 
+        private void pbTrash_MouseDown(object sender, MouseEventArgs e)
+        {
+            HAEFormPopup popup = new HAEFormPopup();
+            popup.ShowDialog();
+        }
+
         private void pbTrash_MouseHover(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
@@ -391,6 +401,16 @@ namespace HAESticker
         private void tbarOpacity_ValueChangeEvent(object sender, EventArgs e)
         {
             this.Opacity = tbarOpacity.Value * OPACITY_RATE;
+        }
+
+        private void HAEForm_Activated(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HAEForm_Deactivate(object sender, EventArgs e)
+        {
+
         }
     }
 }
