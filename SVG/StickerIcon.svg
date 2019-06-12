@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="231.9178"
-     inkscape:cy="48.771093"
+     inkscape:cx="182.42033"
+     inkscape:cy="88.167042"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -646,5 +646,95 @@
        style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.16819584;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
+    <g
+       id="g921"
+       transform="translate(-6.2808339,0.10023327)"
+       inkscape:export-filename="D:\workspaces\HanoiProject\HAESticker\Resources\notiInfo.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <circle
+         r="4.2333331"
+         cy="270.47968"
+         cx="45.058758"
+         id="path893"
+         style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.16890301;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <circle
+         r="3.6883245"
+         style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:#ffffff;stroke-width:0.29626796;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle895"
+         cx="45.058758"
+         cy="270.47968" />
+      <text
+         id="text899"
+         y="273.06177"
+         x="44.099468"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:7.05555534px;fill:#ffffff;stroke-width:0.26458332"
+           y="273.06177"
+           x="44.099468"
+           id="tspan897"
+           sodipodi:role="line">i</tspan></text>
+    </g>
+    <g
+       id="g927"
+       transform="translate(-6.514694,0.10023327)"
+       inkscape:export-filename="D:\workspaces\HanoiProject\HAESticker\Resources\notiAsk.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <circle
+         style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.16890301;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle901"
+         cx="54.880913"
+         cy="270.47968"
+         r="4.2333331" />
+      <circle
+         cy="270.47968"
+         cx="54.880913"
+         id="circle903"
+         style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:#ffffff;stroke-width:0.29626796;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         r="3.6883245" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="52.874146"
+         y="273.06177"
+         id="text907"><tspan
+           sodipodi:role="line"
+           id="tspan905"
+           x="52.874146"
+           y="273.06177"
+           style="font-size:7.05555534px;fill:#ffffff;stroke-width:0.26458332">?</tspan></text>
+    </g>
+    <g
+       id="g933"
+       transform="translate(-6.2808339,0.16703625)"
+       inkscape:export-filename="D:\workspaces\HanoiProject\HAESticker\Resources\notiAlert.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <circle
+         r="4.2333331"
+         cy="270.41287"
+         cx="64.235344"
+         id="circle909"
+         style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:none;stroke-width:0.16890301;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <circle
+         r="3.6883245"
+         style="opacity:1;fill:#2a5b9d;fill-opacity:1;stroke:#ffffff;stroke-width:0.29626796;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="circle911"
+         cx="64.235344"
+         cy="270.41287" />
+      <text
+         id="text915"
+         y="272.97775"
+         x="62.84697"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:7.05555534px;fill:#ffffff;stroke-width:0.26458332"
+           y="272.97775"
+           x="62.84697"
+           id="tspan913"
+           sodipodi:role="line">!</tspan></text>
+    </g>
   </g>
 </svg>
