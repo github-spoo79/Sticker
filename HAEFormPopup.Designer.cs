@@ -31,24 +31,24 @@
             this.tblFormPopup = new System.Windows.Forms.TableLayoutPanel();
             this.pnlFormPopupTitl = new System.Windows.Forms.Panel();
             this.pnlFormPopupBtn = new System.Windows.Forms.TableLayoutPanel();
+            this.pbBtnClose = new System.Windows.Forms.PictureBox();
             this.pnlFormPopupBody = new System.Windows.Forms.Panel();
             this.tblFormPopupBody = new System.Windows.Forms.TableLayoutPanel();
+            this.pbNoti = new System.Windows.Forms.PictureBox();
             this.lblPopupMsg = new System.Windows.Forms.Label();
             this.pnlPopupBottom = new System.Windows.Forms.Panel();
             this.tblBottomBtn = new System.Windows.Forms.TableLayoutPanel();
-            this.pbBtnClose = new System.Windows.Forms.PictureBox();
-            this.pbNoti = new System.Windows.Forms.PictureBox();
             this.lblOK = new System.Windows.Forms.Label();
             this.lblCancel = new System.Windows.Forms.Label();
             this.tblFormPopup.SuspendLayout();
             this.pnlFormPopupTitl.SuspendLayout();
             this.pnlFormPopupBtn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).BeginInit();
             this.pnlFormPopupBody.SuspendLayout();
             this.tblFormPopupBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNoti)).BeginInit();
             this.pnlPopupBottom.SuspendLayout();
             this.tblBottomBtn.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNoti)).BeginInit();
             this.SuspendLayout();
             // 
             // tblFormPopup
@@ -69,9 +69,8 @@
             this.tblFormPopup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblFormPopup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tblFormPopup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
-            this.tblFormPopup.Size = new System.Drawing.Size(300, 140);
+            this.tblFormPopup.Size = new System.Drawing.Size(250, 140);
             this.tblFormPopup.TabIndex = 0;
-            this.tblFormPopup.Paint += new System.Windows.Forms.PaintEventHandler(this.tblFormPopup_Paint);
             // 
             // pnlFormPopupTitl
             // 
@@ -81,7 +80,7 @@
             this.pnlFormPopupTitl.Location = new System.Drawing.Point(2, 0);
             this.pnlFormPopupTitl.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFormPopupTitl.Name = "pnlFormPopupTitl";
-            this.pnlFormPopupTitl.Size = new System.Drawing.Size(296, 24);
+            this.pnlFormPopupTitl.Size = new System.Drawing.Size(246, 24);
             this.pnlFormPopupTitl.TabIndex = 1;
             // 
             // pnlFormPopupBtn
@@ -90,81 +89,13 @@
             this.pnlFormPopupBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.pnlFormPopupBtn.Controls.Add(this.pbBtnClose, 0, 0);
             this.pnlFormPopupBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlFormPopupBtn.Location = new System.Drawing.Point(272, 0);
+            this.pnlFormPopupBtn.Location = new System.Drawing.Point(222, 0);
             this.pnlFormPopupBtn.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFormPopupBtn.Name = "pnlFormPopupBtn";
             this.pnlFormPopupBtn.RowCount = 1;
             this.pnlFormPopupBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.pnlFormPopupBtn.Size = new System.Drawing.Size(24, 24);
             this.pnlFormPopupBtn.TabIndex = 1;
-            // 
-            // pnlFormPopupBody
-            // 
-            this.pnlFormPopupBody.BackColor = System.Drawing.Color.White;
-            this.pnlFormPopupBody.Controls.Add(this.tblFormPopupBody);
-            this.pnlFormPopupBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFormPopupBody.Location = new System.Drawing.Point(2, 24);
-            this.pnlFormPopupBody.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlFormPopupBody.Name = "pnlFormPopupBody";
-            this.pnlFormPopupBody.Size = new System.Drawing.Size(296, 78);
-            this.pnlFormPopupBody.TabIndex = 2;
-            // 
-            // tblFormPopupBody
-            // 
-            this.tblFormPopupBody.ColumnCount = 2;
-            this.tblFormPopupBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
-            this.tblFormPopupBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblFormPopupBody.Controls.Add(this.pbNoti, 0, 0);
-            this.tblFormPopupBody.Controls.Add(this.lblPopupMsg, 1, 0);
-            this.tblFormPopupBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblFormPopupBody.Location = new System.Drawing.Point(0, 0);
-            this.tblFormPopupBody.Name = "tblFormPopupBody";
-            this.tblFormPopupBody.RowCount = 1;
-            this.tblFormPopupBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblFormPopupBody.Size = new System.Drawing.Size(296, 78);
-            this.tblFormPopupBody.TabIndex = 0;
-            // 
-            // lblPopupMsg
-            // 
-            this.lblPopupMsg.AutoSize = true;
-            this.lblPopupMsg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPopupMsg.Location = new System.Drawing.Point(67, 0);
-            this.lblPopupMsg.Name = "lblPopupMsg";
-            this.lblPopupMsg.Size = new System.Drawing.Size(226, 78);
-            this.lblPopupMsg.TabIndex = 1;
-            this.lblPopupMsg.Text = "메모를 삭제하시겠습니까?";
-            this.lblPopupMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnlPopupBottom
-            // 
-            this.pnlPopupBottom.BackColor = System.Drawing.Color.White;
-            this.pnlPopupBottom.Controls.Add(this.tblBottomBtn);
-            this.pnlPopupBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPopupBottom.Location = new System.Drawing.Point(2, 102);
-            this.pnlPopupBottom.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlPopupBottom.Name = "pnlPopupBottom";
-            this.pnlPopupBottom.Size = new System.Drawing.Size(296, 36);
-            this.pnlPopupBottom.TabIndex = 3;
-            // 
-            // tblBottomBtn
-            // 
-            this.tblBottomBtn.ColumnCount = 5;
-            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
-            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblBottomBtn.Controls.Add(this.lblOK, 1, 1);
-            this.tblBottomBtn.Controls.Add(this.lblCancel, 3, 1);
-            this.tblBottomBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblBottomBtn.Location = new System.Drawing.Point(0, 0);
-            this.tblBottomBtn.Name = "tblBottomBtn";
-            this.tblBottomBtn.RowCount = 3;
-            this.tblBottomBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tblBottomBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblBottomBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tblBottomBtn.Size = new System.Drawing.Size(296, 36);
-            this.tblBottomBtn.TabIndex = 0;
             // 
             // pbBtnClose
             // 
@@ -180,6 +111,32 @@
             this.pbBtnClose.MouseLeave += new System.EventHandler(this.pbBtnClose_MouseLeave);
             this.pbBtnClose.MouseHover += new System.EventHandler(this.pbBtnClose_MouseHover);
             // 
+            // pnlFormPopupBody
+            // 
+            this.pnlFormPopupBody.BackColor = System.Drawing.Color.White;
+            this.pnlFormPopupBody.Controls.Add(this.tblFormPopupBody);
+            this.pnlFormPopupBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFormPopupBody.Location = new System.Drawing.Point(2, 24);
+            this.pnlFormPopupBody.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlFormPopupBody.Name = "pnlFormPopupBody";
+            this.pnlFormPopupBody.Size = new System.Drawing.Size(246, 78);
+            this.pnlFormPopupBody.TabIndex = 2;
+            // 
+            // tblFormPopupBody
+            // 
+            this.tblFormPopupBody.ColumnCount = 2;
+            this.tblFormPopupBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tblFormPopupBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblFormPopupBody.Controls.Add(this.pbNoti, 0, 0);
+            this.tblFormPopupBody.Controls.Add(this.lblPopupMsg, 1, 0);
+            this.tblFormPopupBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblFormPopupBody.Location = new System.Drawing.Point(0, 0);
+            this.tblFormPopupBody.Name = "tblFormPopupBody";
+            this.tblFormPopupBody.RowCount = 1;
+            this.tblFormPopupBody.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblFormPopupBody.Size = new System.Drawing.Size(246, 78);
+            this.tblFormPopupBody.TabIndex = 0;
+            // 
             // pbNoti
             // 
             this.pbNoti.BackgroundImage = global::HAESticker.Properties.Resources.notiAsk;
@@ -192,13 +149,55 @@
             this.pbNoti.TabIndex = 0;
             this.pbNoti.TabStop = false;
             // 
+            // lblPopupMsg
+            // 
+            this.lblPopupMsg.AutoSize = true;
+            this.lblPopupMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPopupMsg.Location = new System.Drawing.Point(67, 0);
+            this.lblPopupMsg.Name = "lblPopupMsg";
+            this.lblPopupMsg.Size = new System.Drawing.Size(176, 78);
+            this.lblPopupMsg.TabIndex = 1;
+            this.lblPopupMsg.Text = "메모를 삭제하시겠습니까?";
+            this.lblPopupMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pnlPopupBottom
+            // 
+            this.pnlPopupBottom.BackColor = System.Drawing.Color.White;
+            this.pnlPopupBottom.Controls.Add(this.tblBottomBtn);
+            this.pnlPopupBottom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPopupBottom.Location = new System.Drawing.Point(2, 102);
+            this.pnlPopupBottom.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlPopupBottom.Name = "pnlPopupBottom";
+            this.pnlPopupBottom.Size = new System.Drawing.Size(246, 36);
+            this.pnlPopupBottom.TabIndex = 3;
+            // 
+            // tblBottomBtn
+            // 
+            this.tblBottomBtn.ColumnCount = 4;
+            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblBottomBtn.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblBottomBtn.Controls.Add(this.lblOK, 1, 1);
+            this.tblBottomBtn.Controls.Add(this.lblCancel, 2, 1);
+            this.tblBottomBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblBottomBtn.Location = new System.Drawing.Point(0, 0);
+            this.tblBottomBtn.Name = "tblBottomBtn";
+            this.tblBottomBtn.RowCount = 3;
+            this.tblBottomBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tblBottomBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblBottomBtn.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tblBottomBtn.Size = new System.Drawing.Size(246, 36);
+            this.tblBottomBtn.TabIndex = 0;
+            // 
             // lblOK
             // 
             this.lblOK.AutoSize = true;
             this.lblOK.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblOK.ForeColor = System.Drawing.Color.White;
             this.lblOK.Image = global::HAESticker.Properties.Resources.btnColor;
-            this.lblOK.Location = new System.Drawing.Point(68, 5);
+            this.lblOK.Location = new System.Drawing.Point(46, 5);
             this.lblOK.Name = "lblOK";
             this.lblOK.Size = new System.Drawing.Size(74, 26);
             this.lblOK.TabIndex = 0;
@@ -214,7 +213,7 @@
             this.lblCancel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblCancel.ForeColor = System.Drawing.Color.White;
             this.lblCancel.Image = global::HAESticker.Properties.Resources.btnColor;
-            this.lblCancel.Location = new System.Drawing.Point(154, 5);
+            this.lblCancel.Location = new System.Drawing.Point(126, 5);
             this.lblCancel.Name = "lblCancel";
             this.lblCancel.Size = new System.Drawing.Size(74, 26);
             this.lblCancel.TabIndex = 1;
@@ -228,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 140);
+            this.ClientSize = new System.Drawing.Size(250, 140);
             this.Controls.Add(this.tblFormPopup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HAEFormPopup";
@@ -239,14 +238,14 @@
             this.tblFormPopup.ResumeLayout(false);
             this.pnlFormPopupTitl.ResumeLayout(false);
             this.pnlFormPopupBtn.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).EndInit();
             this.pnlFormPopupBody.ResumeLayout(false);
             this.tblFormPopupBody.ResumeLayout(false);
             this.tblFormPopupBody.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNoti)).EndInit();
             this.pnlPopupBottom.ResumeLayout(false);
             this.tblBottomBtn.ResumeLayout(false);
             this.tblBottomBtn.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbBtnClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbNoti)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -17,11 +17,6 @@ namespace HAESticker
             InitializeComponent();
         }
 
-        private void tblFormPopup_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void lblOK_MouseHover(object sender, EventArgs e)
         {
             lblOK.Image = Properties.Resources.btnColorHover;
