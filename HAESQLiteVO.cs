@@ -15,7 +15,12 @@ namespace HAESticker
             haeSQLiteVO = new Dictionary<string, object>();
         }
 
-        public void add(string key, object val)
+        public object get(string key)
+        {
+            return haeSQLiteVO[key];
+        }
+
+        public void set(string key, object val)
         {
             if (haeSQLiteVO.ContainsKey(key))
             {
@@ -32,9 +37,14 @@ namespace HAESticker
             haeSQLiteVO.Remove(key);
         }
 
-        public object get(string key)
+        public int count()
         {
-            return haeSQLiteVO[key];
+            return haeSQLiteVO.Count;
+        }
+
+        public string getKeys(int idx)
+        {
+            return haeSQLiteVO.Keys.ToList()[idx];
         }
     }
 }
