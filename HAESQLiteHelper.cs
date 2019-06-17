@@ -39,30 +39,42 @@ namespace HAESticker
         private DataTable selectData(string sql)
         {
             DataTable dt = new DataTable();
-            conn.Open();
-            sqlcmd = conn.CreateCommand();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, conn);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
-            dt = ds.Tables[0];
-            conn.Close();
+            try
+            {
+                conn.Open();
+                sqlcmd = conn.CreateCommand();
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, conn);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                dt = ds.Tables[0];
+                conn.Close();
+            }
+            catch
+            {
+            }
             return dt;
         }
 
         private DataTable selectData(string sql, DataTable dtParam)
         {
             DataTable dt = new DataTable();
-            conn.Open();
-            sqlcmd = conn.CreateCommand();
-            for(int idx = 0; idx < dtParam.Columns.Count; idx++)
+            try
             {
-                sqlcmd.Parameters.AddWithValue(dtParam.Columns[idx].ColumnName, dtParam.Rows[0][dtParam.Columns[idx].ColumnName]);
+                conn.Open();
+                sqlcmd = conn.CreateCommand();
+                for (int idx = 0; idx < dtParam.Columns.Count; idx++)
+                {
+                    sqlcmd.Parameters.AddWithValue(dtParam.Columns[idx].ColumnName, dtParam.Rows[0][dtParam.Columns[idx].ColumnName]);
+                }
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, conn);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+                dt = ds.Tables[0];
+                conn.Close();
             }
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, conn);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds);
-            dt = ds.Tables[0];
-            conn.Close();
+            catch
+            {
+            }
             return dt;
         }
 
