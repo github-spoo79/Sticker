@@ -18,6 +18,7 @@ namespace HAESticker
 
         public HAESQLiteHelper()
         {
+            setConnection();
         }
 
         public HAESQLiteHelper(string sqliteFileName)
@@ -29,14 +30,21 @@ namespace HAESticker
                 SQLiteConnection.CreateFile(sqliteFileName);
                 //Sticker 프로그램 Table 초기화
             }
+
+            setConnection();
         }
 
-        private void setConnection()
+        public void setConnection()
         {
-            conn = new SQLiteConnection("Data Source=" + sqliteFileName + ";Version=3;");
+            //conn = new SQLiteConnection("Data Source=" + System.Windows.Forms.Application.StartupPath + "\\DB\\sticker.db");
+            //D:\workspaces\projects\Sticker\bin\Debug\DB
+            string dbPath = System.Windows.Forms.Application.StartupPath + "\\DB\\sticker.db";
+
+            //conn = new SQLiteConnection(@"Data Source=D:\\workspaces\\projects\\Sticker\\bin\\Debug\\DB\\sticker.db");
+            conn = new SQLiteConnection(@"Data Source=" + dbPath);
         }
 
-        private DataTable selectData(string sql)
+        public DataTable selectData(string sql)
         {
             DataTable dt = new DataTable();
             try
@@ -49,13 +57,14 @@ namespace HAESticker
                 dt = ds.Tables[0];
                 conn.Close();
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.ToString());
             }
             return dt;
         }
 
-        private DataTable selectData(string sql, DataTable dtParam)
+        public DataTable selectData(string sql, DataTable dtParam)
         {
             DataTable dt = new DataTable();
             try
@@ -78,13 +87,13 @@ namespace HAESticker
             return dt;
         }
 
-        private int executeData(string sql)
+        public int executeData(string sql)
         {
             int exeCnt = 0;
             return exeCnt;
         }
 
-        private int executeData(string sql, DataTable dtParam)
+        public int executeData(string sql, DataTable dtParam)
         {
             int exeCnt = 0;
             return exeCnt;

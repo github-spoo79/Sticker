@@ -23,6 +23,35 @@ namespace HAESticker
             InitializeComponent();
             pbTrackBall.Location = new Point(trackBallX, 0);
             drawTrackBall();
+
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Column1", typeof(string));
+            dt.Columns.Add("Column2", typeof(string));
+            dt.Columns.Add("Column3", typeof(string));
+            dt.Columns.Add("Column4", typeof(string));
+
+            DataRow dr = dt.NewRow();
+            dr["Column1"] = "A";
+            dr["Column2"] = "B";
+            dr["Column3"] = "C";
+            dr["Column4"] = "D";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["Column1"] = "A";
+            dr["Column2"] = "B";
+            dr["Column3"] = "C";
+            dr["Column4"] = "D";
+            dt.Rows.Add(dr);
+
+            dr = dt.NewRow();
+            dr["Column1"] = "A";
+            dr["Column2"] = "B";
+            dr["Column3"] = "C";
+            dr["Column4"] = "D";
+            dt.Rows.Add(dr);
+
+            dataGridView1.DataSource = dt;
         }
 
         private void drawTrackBall()
@@ -79,6 +108,49 @@ namespace HAESticker
         private void HAETestForm_Paint(object sender, PaintEventArgs e)
         {
             drawTrackBall();
+        }
+
+        private void dataGridView1_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(e.RowIndex > -1)
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightBlue;
+            }            
+        }
+
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            HAESQLiteHelper sqlite = new HAESQLiteHelper();
+
+            string sql = "select * from sticker";
+            DataTable dt = sqlite.selectData(sql);
+            dataGridView1.DataSource = dt;
+
+            for(int idx = 0; idx < dt.Rows.Count; idx++)
+            {
+                DataRow dr = dt.Rows[idx];
+                HAEForm h = new HAEForm();
+                h.FormId = Convert.ToString(dr["form_id"]);
+                h.PosX = Convert.ToInt32(dr["pos_x"]);
+                h.PosY = Convert.ToInt32(dr["pos_y"]);
+                h.FormWidth = Convert.ToInt32(dr["form_width"]);
+                h.FormHeight = Convert.ToInt32(dr["form_height"]);
+                h.FormOpacity = Convert.ToInt32(dr["form_opacity"]);
+                h.Title = Convert.ToString(dr["title"]);
+                h.Contents = Convert.ToString(dr["contents"]);
+                h.StartPosition = FormStartPosition.Manual;
+                h.Location = new Point(h.PosX, h.PosY);
+                h.Show();
+                h.Focus();
+            }
         }
     }
 }

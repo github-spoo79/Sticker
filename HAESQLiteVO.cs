@@ -37,7 +37,7 @@ namespace HAESticker
             haeSQLiteVO.Remove(key);
         }
 
-        public int count()
+        public int size()
         {
             return haeSQLiteVO.Count;
         }
