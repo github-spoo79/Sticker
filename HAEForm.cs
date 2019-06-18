@@ -12,6 +12,119 @@ namespace HAESticker
 {
     public partial class HAEForm : Form
     {
+        private string formId;
+        private int posX;
+        private int posY;
+        private int formWidth;
+        private int formHeight;
+        private int formPrevWidth;
+        private int formPrevHeight;
+        private int formOpacity;
+        private string title;
+        private string contents;
+        private string delYn;
+        private string delDt;
+        private string hiddenYn;
+        private string foldYn;
+        private string rgstDt;
+        private string updtDt;
+
+        public string FormId
+        {
+            get { return formId; }
+            set { formId = value; }
+        }
+
+        public int PosX
+        {
+            get { return posX; }
+            set { posX = value; }
+        }
+
+        public int PosY
+        {
+            get { return posY; }
+            set { posY = value; }
+        }
+
+        public int FormWidth
+        {
+            get { return formWidth; }
+            set { formWidth = value; }
+        }
+
+        public int FormHeight
+        {
+            get { return formHeight; }
+            set { formHeight = value; }
+        }
+
+        public int FormPrevWidth
+        {
+            get { return formPrevWidth; }
+            set { formPrevWidth = value; }
+        }
+
+        public int FormPrevHeight
+        {
+            get { return formPrevHeight; }
+            set { formPrevHeight = value; }
+        }
+
+        public int FormOpacity
+        {
+            get { return formOpacity; }
+            set { formOpacity = value; }
+        }
+
+        public string Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+
+        public string Contents
+        {
+            get { return contents; }
+            set { contents = value; }
+        }
+
+        public string DelYn
+        {
+            get { return delYn; }
+            set { delYn = value; }
+        }
+
+        public string DelDt
+        {
+            get { return delDt; }
+            set { delDt = value; }
+        }
+
+        public string HiddenYn
+        {
+            get { return hiddenYn; }
+            set { hiddenYn = value; }
+        }
+
+        public string FoldYn
+        {
+            get { return foldYn; }
+            set { foldYn = value; }
+        }
+
+        public string RgstDt
+        {
+            get { return rgstDt; }
+            set { rgstDt = value; }
+        }
+
+        public string UpdtDt
+        {
+            get { return updtDt; }
+            set { updtDt = value; }
+        }
+
         private bool dragging;
         private bool resizing;
         private bool resizingUp;
@@ -31,13 +144,22 @@ namespace HAESticker
         private int MINIMUM_HEIGHT = 26;
         private double OPACITY_RATE = 0.01;
 
-
-
         public HAEForm()
         {
             InitializeComponent();
-
+            
             initEventHandler();
+        }
+
+        private void initSticker()
+        {
+            this.Width = this.formWidth;
+            this.Height = this.formHeight;
+            lblFormTitle.Text = this.Title;
+            rtbContents.Text = this.Contents;
+            tbarOpacity.Value = this.formOpacity;
+
+            tbarOpacity.redrawTrackBall();
         }
 
         private void initEventHandler()
@@ -53,8 +175,6 @@ namespace HAESticker
             lblFormTitle.MouseDown += HAEForm_MouseDown;
             lblFormTitle.MouseUp += HAEForm_MouseUp;
             lblFormTitle.MouseMove += HAEForm_MouseMove;
-
-            tbarOpacity.redrawTrackBall();
         }
 
         private void HAEForm_MouseDown(object sender, MouseEventArgs e)
@@ -130,12 +250,20 @@ namespace HAESticker
                     }
                     else if (resizingUp)
                     {
-                        this.Height = previousLocation.Y + previousSize.Height - currentScreenPos.Y + offset.Y;
+                        //최소 높이 이하로 Form Size를 줄이는 것 방지
+                        if(previousLocation.Y + previousSize.Height - currentScreenPos.Y + offset.Y >= MINIMUM_HEIGHT)
+                        {
+                            this.Height = previousLocation.Y + previousSize.Height - currentScreenPos.Y + offset.Y;
+                        }                        
                         this.Location = new Point(previousLocation.X, previousLocation.Y + previousSize.Height - this.Height);
                     }
                     else if (resizingDown)
                     {
-                        this.Height = currentScreenPos.Y - previousLocation.Y + previousSize.Height - offset.Y;
+                        //최소 높이 이하로 Form Size를 줄이는 것 방지
+                        if (currentScreenPos.Y - previousLocation.Y + previousSize.Height - offset.Y >= MINIMUM_HEIGHT)
+                        {
+                            this.Height = currentScreenPos.Y - previousLocation.Y + previousSize.Height - offset.Y;
+                        }
                     }
                 }
                 else
@@ -342,18 +470,26 @@ namespace HAESticker
 
         private void lblFormTitle_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (folding)
+            if(e.Button == MouseButtons.Left)
             {
-                this.Width = previousFoldingSize.Width;
-                this.Height = previousFoldingSize.Height;
-                folding = false;
+                if (folding)
+                {
+                    this.Width = previousFoldingSize.Width;
+                    this.Height = previousFoldingSize.Height;
+                    folding = false;
+                }
+                else
+                {
+                    previousFoldingSize = this.Size;
+                    this.Width = MINIMUM_WIDTH;
+                    this.Height = MINIMUM_HEIGHT;
+                    folding = true;
+                }
             }
             else
             {
-                previousFoldingSize = this.Size;
-                this.Width = MINIMUM_WIDTH;
-                this.Height = MINIMUM_HEIGHT;
-                folding = true;
+                HAETitlePopup titlePopup = new HAETitlePopup();
+                titlePopup.ShowDialog();
             }
         }
 
@@ -404,13 +540,17 @@ namespace HAESticker
         }
 
         private void HAEForm_Activated(object sender, EventArgs e)
-        {
-
+        {            
         }
 
         private void HAEForm_Deactivate(object sender, EventArgs e)
         {
 
+        }
+
+        private void HAEForm_Load(object sender, EventArgs e)
+        {
+            initSticker();
         }
     }
 }
