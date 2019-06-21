@@ -12,7 +12,7 @@ namespace HAESticker
     class HAESQLiteHelper
     {
         private SQLiteConnection conn;
-        private SQLiteCommand sqlcmd;
+        private SQLiteCommand sqlCmd;
         
         private string sqliteFileName = string.Empty;
 
@@ -30,72 +30,106 @@ namespace HAESticker
                 SQLiteConnection.CreateFile(sqliteFileName);
                 //Sticker 프로그램 Table 초기화
             }
-
             setConnection();
         }
 
         public void setConnection()
         {
-            //conn = new SQLiteConnection("Data Source=" + System.Windows.Forms.Application.StartupPath + "\\DB\\sticker.db");
-            //D:\workspaces\projects\Sticker\bin\Debug\DB
             string dbPath = System.Windows.Forms.Application.StartupPath + "\\DB\\sticker.db";
-
-            //conn = new SQLiteConnection(@"Data Source=D:\\workspaces\\projects\\Sticker\\bin\\Debug\\DB\\sticker.db");
             conn = new SQLiteConnection(@"Data Source=" + dbPath);
         }
 
-        public DataTable selectData(string sql)
+        public DataTable select(string sql)
         {
             DataTable dt = new DataTable();
             try
             {
                 conn.Open();
-                sqlcmd = conn.CreateCommand();
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, conn);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
-                dt = ds.Tables[0];
-                conn.Close();
+                sqlCmd = conn.CreateCommand();
+                sqlCmd.CommandText = sql;
+                SQLiteDataReader reader = sqlCmd.ExecuteReader();
+                dt.Load(reader);
             }
             catch(Exception e)
             {
-                Console.WriteLine(e.ToString());
+            }
+            finally
+            {
+                conn.Close();
             }
             return dt;
         }
 
-        public DataTable selectData(string sql, DataTable dtParam)
+        public DataTable select(string sql, HAESQLiteVO vo)
         {
             DataTable dt = new DataTable();
             try
             {
                 conn.Open();
-                sqlcmd = conn.CreateCommand();
-                for (int idx = 0; idx < dtParam.Columns.Count; idx++)
+                sqlCmd = conn.CreateCommand();
+                sqlCmd.CommandText = sql;
+                string columnName = string.Empty;
+                for(int idx = 0; idx < vo.size(); idx++)
                 {
-                    sqlcmd.Parameters.AddWithValue(dtParam.Columns[idx].ColumnName, dtParam.Rows[0][dtParam.Columns[idx].ColumnName]);
+                    columnName = vo.getKeys(idx);
+                    sqlCmd.Parameters.AddWithValue("@" + columnName, vo.get(columnName));
                 }
-                SQLiteDataAdapter adapter = new SQLiteDataAdapter(sql, conn);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds);
-                dt = ds.Tables[0];
-                conn.Close();
+                SQLiteDataReader reader = sqlCmd.ExecuteReader();
+                dt.Load(reader);
             }
             catch
             {
             }
+            finally
+            {
+                conn.Close();
+            }
             return dt;
         }
 
-        public int executeData(string sql)
+        public int executeQuery(string sql)
         {
             int exeCnt = 0;
+            try
+            {
+                conn.Open();
+                sqlCmd = conn.CreateCommand();
+                sqlCmd.CommandText = sql;
+                exeCnt = sqlCmd.ExecuteNonQuery();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                conn.Close();
+            }            
             return exeCnt;
         }
 
-        public int executeData(string sql, DataTable dtParam)
+        public int executeQuery(string sql, HAESQLiteVO vo)
         {
             int exeCnt = 0;
+            try
+            {
+                conn.Open();
+                sqlCmd = conn.CreateCommand();
+                sqlCmd.CommandText = sql;
+                string columnName = string.Empty;
+                for (int idx = 0; idx < vo.size(); idx++)
+                {
+                    columnName = vo.getKeys(idx);
+                    sqlCmd.Parameters.AddWithValue("@" + columnName, vo.get(columnName));
+                }
+                exeCnt = sqlCmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+            }
+            finally
+            {
+                conn.Close();
+            }
             return exeCnt;
         }
 
