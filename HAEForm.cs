@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HAESticker.VO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,119 +13,6 @@ namespace HAESticker
 {
     public partial class HAEForm : Form
     {
-        private string formId;
-        private int posX;
-        private int posY;
-        private int formWidth;
-        private int formHeight;
-        private int formPrevWidth;
-        private int formPrevHeight;
-        private int formOpacity;
-        private string title;
-        private string contents;
-        private string delYn;
-        private string delDt;
-        private string hiddenYn;
-        private string foldYn;
-        private string rgstDt;
-        private string updtDt;
-
-        public string FormId
-        {
-            get { return formId; }
-            set { formId = value; }
-        }
-
-        public int PosX
-        {
-            get { return posX; }
-            set { posX = value; }
-        }
-
-        public int PosY
-        {
-            get { return posY; }
-            set { posY = value; }
-        }
-
-        public int FormWidth
-        {
-            get { return formWidth; }
-            set { formWidth = value; }
-        }
-
-        public int FormHeight
-        {
-            get { return formHeight; }
-            set { formHeight = value; }
-        }
-
-        public int FormPrevWidth
-        {
-            get { return formPrevWidth; }
-            set { formPrevWidth = value; }
-        }
-
-        public int FormPrevHeight
-        {
-            get { return formPrevHeight; }
-            set { formPrevHeight = value; }
-        }
-
-        public int FormOpacity
-        {
-            get { return formOpacity; }
-            set { formOpacity = value; }
-        }
-
-        public string Title
-        {
-            get { return title; }
-            set { title = value; }
-        }
-
-        public string Contents
-        {
-            get { return contents; }
-            set { contents = value; }
-        }
-
-        public string DelYn
-        {
-            get { return delYn; }
-            set { delYn = value; }
-        }
-
-        public string DelDt
-        {
-            get { return delDt; }
-            set { delDt = value; }
-        }
-
-        public string HiddenYn
-        {
-            get { return hiddenYn; }
-            set { hiddenYn = value; }
-        }
-
-        public string FoldYn
-        {
-            get { return foldYn; }
-            set { foldYn = value; }
-        }
-
-        public string RgstDt
-        {
-            get { return rgstDt; }
-            set { rgstDt = value; }
-        }
-
-        public string UpdtDt
-        {
-            get { return updtDt; }
-            set { updtDt = value; }
-        }
-
         private bool dragging;
         private bool resizing;
         private bool resizingUp;
@@ -140,24 +28,37 @@ namespace HAESticker
         private bool holding = false;
         private bool folding = false;
 
-        private int MINIMUM_WIDTH = 300;
+        //private int MINIMUM_WIDTH = 300;
         private int MINIMUM_HEIGHT = 26;
         private double OPACITY_RATE = 0.01;
+
+        public StickerVO stickerVO;
+
+        HAESQLiteQuery haeSQLiteQuery = new HAESQLiteQuery();
 
         public HAEForm()
         {
             InitializeComponent();
-            
+
+            initEventHandler();
+        }
+
+        public HAEForm(StickerVO vo)
+        {
+            InitializeComponent();
+
+            stickerVO = vo;
+
             initEventHandler();
         }
 
         private void initSticker()
         {
-            this.Width = this.formWidth;
-            this.Height = this.formHeight;
-            lblFormTitle.Text = this.Title;
-            rtbContents.Text = this.Contents;
-            tbarOpacity.Value = this.formOpacity;
+            this.Width = stickerVO.FormWidth;
+            this.Height = stickerVO.FormHeight;
+            lblFormTitle.Text = stickerVO.Title;
+            rtbContents.Text = stickerVO.Contents;
+            tbarOpacity.Value = stickerVO.FormOpacity;
 
             tbarOpacity.redrawTrackBall();
         }
@@ -474,14 +375,14 @@ namespace HAESticker
             {
                 if (folding)
                 {
-                    this.Width = previousFoldingSize.Width;
+                    //this.Width = previousFoldingSize.Width;
                     this.Height = previousFoldingSize.Height;
                     folding = false;
                 }
                 else
                 {
                     previousFoldingSize = this.Size;
-                    this.Width = MINIMUM_WIDTH;
+                    //this.Width = MINIMUM_WIDTH;
                     this.Height = MINIMUM_HEIGHT;
                     folding = true;
                 }
@@ -489,15 +390,14 @@ namespace HAESticker
             else
             {
                 HAETitlePopup titlePopup = new HAETitlePopup();
-                titlePopup.ShowDialog();
+                titlePopup.Title = lblFormTitle.Text.ToString();
+                if(titlePopup.ShowDialog() == DialogResult.OK)
+                {
+                    lblFormTitle.Text = titlePopup.title;
+                }
             }
         }
-
-        private void richTextBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-
-        }
-
+        
         private void tbOpacity_MouseHover(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
@@ -545,12 +445,98 @@ namespace HAESticker
 
         private void HAEForm_Deactivate(object sender, EventArgs e)
         {
-
+            //포커스가 변경되는 경우, sticker 입력된 내용을 저장
+            saveStickerInfo();
         }
 
         private void HAEForm_Load(object sender, EventArgs e)
         {
             initSticker();
+        }
+
+        private void saveStickerInfo()
+        {
+            switch (stickerVO.IudFlag)
+            {
+                case "I":
+                    insertStickerInfo();
+                    break;
+                case "U":
+                    updateStickerInfo();
+                    break;
+            }
+        }
+
+        private void insertStickerInfo()
+        {
+            /*
+            INSERT INTO sticker(form_id, pos_x, pos_y, form_width
+            , form_height, prev_form_width, prev_form_height
+            , form_opacity, title, contents_rft, contents
+            , hidden_yn, fold_yn, rgst_dt, updt_dt)
+            VALUES(@form_id, @pos_x, @pos_y, @form_width
+            , @form_height, @prev_form_width, @prev_form_height
+            , @form_opacity, @title, @contents_rtf, @contents
+            , @hidden_yn, @fold_yn, @rgst_dt, @updt_dt)
+            */
+            HAESQLiteVO vo = new HAESQLiteVO();
+            vo.set("form_id", stickerVO.FormId);
+            vo.set("pos_x", this.Location.X);
+            vo.set("pos_y", this.Location.Y);
+            vo.set("form_width", this.Width);
+            vo.set("form_height", this.Height);
+            vo.set("prev_form_width", this.Width);
+            vo.set("prev_form_height", this.Height);
+            vo.set("form_opacity", tbarOpacity.Value);
+            vo.set("title", lblFormTitle.Text);
+            vo.set("contents", rtbContents.Text);
+            vo.set("contents_rtf", rtbContents.Text);
+            vo.set("fold_yn", "N");
+            vo.set("hidden_yn", "N");
+            vo.set("rgst_dt", DateTime.Today.ToLongDateString());
+            vo.set("updt_dt", DateTime.Today.ToLongDateString());
+
+            if (haeSQLiteQuery.insertStickerInfo(vo) > 0)
+            {
+                stickerVO.IudFlag = "U";
+            }
+        }
+
+        private void updateStickerInfo()
+        {
+            /*
+            UPDATE sticker
+            SET pos_x = @pos_x
+            , pos_y = @pos_y
+            , form_width = @form_width
+            , form_height = @form_height
+            , prev_form_width = @prev_form_width
+            , prev_form_height = @prev_form_height
+            , form_opacity = @form_opacity
+            , title = @title
+            , contents_rft = @contents_rft
+            , contents = @contents
+            , hidden_yn = @hidden_yn
+            , fold_yn = @fold_yn
+            , updt_dt = @updt_dt
+            WHERE form_id = @form_id
+            */
+            HAESQLiteVO vo = new HAESQLiteVO();
+            vo.set("form_id", stickerVO.FormId);
+            vo.set("pos_x", this.Location.X);
+            vo.set("pos_y", this.Location.Y);
+            vo.set("form_width", this.Width);
+            vo.set("form_height", this.Height);
+            vo.set("prev_form_width", this.Width);
+            vo.set("prev_form_height", this.Height);
+            vo.set("form_opacity", tbarOpacity.Value);
+            vo.set("title", lblFormTitle.Text);
+            vo.set("contents", rtbContents.Text);
+            vo.set("contents_rtf", rtbContents.Text);
+            vo.set("fold_yn", "N");
+            vo.set("hidden_yn", "N");
+            vo.set("updt_dt", DateTime.Today.ToLongDateString());
+            haeSQLiteQuery.updateStickerInfo(vo);
         }
     }
 }
