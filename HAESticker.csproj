@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HAESQLiteQuery.cs" />
     <Compile Include="HAETitlePopup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +85,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VO\StickerVO.cs" />
     <EmbeddedResource Include="HAEForm.resx">
       <DependentUpon>HAEForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,7 +112,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DB\sticker.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -215,6 +217,9 @@
     <None Include="Resources\notiAsk.png" />
     <None Include="Resources\btnColorHover.png" />
     <None Include="Resources\btnColor.png" />
+    <Content Include="HAESQLQuery.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SVG\StickerIcon.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

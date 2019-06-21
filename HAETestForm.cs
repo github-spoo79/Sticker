@@ -129,16 +129,29 @@ namespace HAESticker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            HAESQLiteHelper sqlite = new HAESQLiteHelper();
+            HAESQLiteQuery haeSQLiteQuery = new HAESQLiteQuery();
+            ////20190618141000
+            //HAESQLiteVO vo = new HAESQLiteVO();
+            //vo.set("form_id", "20190618141000");
+            //DataTable dt = haeSQLiteQuery.getStickerInfoByFormId(vo);
+            //DataTable dt = haeSQLiteQuery.getStickerInfo(null);
 
-            string sql = "select * from sticker";
-            DataTable dt = sqlite.selectData(sql);
+            //dataGridView1.DataSource = dt;
+
+            //HAESQLiteHelper sqlite = new HAESQLiteHelper();
+
+            //string sql = "select * from sticker";
+            //DataTable dt = sqlite.selectData(sql);
+            //dataGridView1.DataSource = dt;
+
+            DataTable dt = haeSQLiteQuery.getStickerInfo(null);
             dataGridView1.DataSource = dt;
 
-            for(int idx = 0; idx < dt.Rows.Count; idx++)
+            for (int idx = 0; idx < dt.Rows.Count; idx++)
             {
                 DataRow dr = dt.Rows[idx];
                 StickerVO stickerVO = new StickerVO();
+                stickerVO.IudFlag = "U";
                 stickerVO.FormId = Convert.ToString(dr["form_id"]);
                 stickerVO.PosX = Convert.ToInt32(dr["pos_x"]);
                 stickerVO.PosY = Convert.ToInt32(dr["pos_y"]);
@@ -149,7 +162,7 @@ namespace HAESticker
                 stickerVO.Contents = Convert.ToString(dr["contents"]);
                 stickerVO.FoldYn = Convert.ToString(dr["fold_yn"]);
 
-                HAEForm h = new HAEForm(stickerVO);                
+                HAEForm h = new HAEForm(stickerVO);
                 h.StartPosition = FormStartPosition.Manual;
                 h.Location = new Point(stickerVO.PosX, stickerVO.PosY);
                 h.Show();
@@ -281,6 +294,20 @@ namespace HAESticker
                 e.Graphics.DrawRectangle(pen, rowBounds);
                 //e.DrawFocus(rowBounds, true);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {            
+            StickerVO stickerVO = new StickerVO();
+            stickerVO.IudFlag = "I";
+            stickerVO.FormId = DateTime.Now.ToString("yyyyMMddhhmmss");
+            stickerVO.Title = "새메모";
+            stickerVO.FormWidth = 200;
+            stickerVO.FormHeight = 200;
+            stickerVO.FormOpacity = 100;
+            HAEForm h = new HAEForm(stickerVO);
+            h.Show();
+            h.Focus();
         }
     }
 }
