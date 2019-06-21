@@ -35,7 +35,7 @@
             this.pbBtnClose = new System.Windows.Forms.PictureBox();
             this.pnlFormPopupBody = new System.Windows.Forms.Panel();
             this.tblFormPopupBody = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.pnlPopupBottom = new System.Windows.Forms.Panel();
             this.tblBottomBtn = new System.Windows.Forms.TableLayoutPanel();
             this.lblOK = new System.Windows.Forms.Label();
@@ -141,7 +141,7 @@
             this.tblFormPopupBody.ColumnCount = 2;
             this.tblFormPopupBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tblFormPopupBody.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblFormPopupBody.Controls.Add(this.textBox1, 0, 0);
+            this.tblFormPopupBody.Controls.Add(this.txtTitle, 0, 0);
             this.tblFormPopupBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblFormPopupBody.Location = new System.Drawing.Point(0, 0);
             this.tblFormPopupBody.Name = "tblFormPopupBody";
@@ -150,14 +150,14 @@
             this.tblFormPopupBody.Size = new System.Drawing.Size(246, 28);
             this.tblFormPopupBody.TabIndex = 0;
             // 
-            // textBox1
+            // txtTitle
             // 
-            this.tblFormPopupBody.SetColumnSpan(this.textBox1, 2);
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(3, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 21);
-            this.textBox1.TabIndex = 0;
+            this.tblFormPopupBody.SetColumnSpan(this.txtTitle, 2);
+            this.txtTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtTitle.Location = new System.Drawing.Point(3, 3);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(240, 21);
+            this.txtTitle.TabIndex = 0;
             // 
             // pnlPopupBottom
             // 
@@ -234,6 +234,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HAEFormPopup";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.HAETitlePopup_Load);
             this.tblFormPopup.ResumeLayout(false);
             this.pnlFormPopupTitl.ResumeLayout(false);
             this.pnlFormPopupTitl.PerformLayout();
@@ -262,6 +264,6 @@
         private System.Windows.Forms.Label lblOK;
         private System.Windows.Forms.Label lblCancel;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTitle;
     }
 }

@@ -12,6 +12,14 @@ namespace HAESticker
 {
     public partial class HAETitlePopup : Form
     {
+        public string title = string.Empty;
+
+        public string Title
+        {
+            get { return this.title; }
+            set { title = value; }
+        }
+
         public HAETitlePopup()
         {
             InitializeComponent();
@@ -29,6 +37,8 @@ namespace HAESticker
 
         private void lblOK_MouseDown(object sender, MouseEventArgs e)
         {
+            this.title = txtTitle.Text;
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -44,6 +54,7 @@ namespace HAESticker
 
         private void lblCancel_MouseDown(object sender, MouseEventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -60,6 +71,12 @@ namespace HAESticker
         private void pbBtnClose_MouseDown(object sender, MouseEventArgs e)
         {
             this.Close();
+        }
+
+        private void HAETitlePopup_Load(object sender, EventArgs e)
+        {
+            txtTitle.Text = title;
+            txtTitle.Focus();
         }
     }
 }
