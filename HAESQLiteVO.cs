@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HAESticker
 {
-    class HAESQLiteVO
+    public class HAESQLiteVO
     {
         private Dictionary<string, object> haeSQLiteVO = null;
 
