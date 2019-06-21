@@ -29,6 +29,7 @@ namespace HAESticker
 
         private void lblOK_MouseDown(object sender, MouseEventArgs e)
         {
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -44,6 +45,7 @@ namespace HAESticker
 
         private void lblCancel_MouseDown(object sender, MouseEventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 

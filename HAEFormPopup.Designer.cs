@@ -235,6 +235,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "HAEFormPopup";
+            this.TopMost = true;
             this.tblFormPopup.ResumeLayout(false);
             this.pnlFormPopupTitl.ResumeLayout(false);
             this.pnlFormPopupBtn.ResumeLayout(false);
