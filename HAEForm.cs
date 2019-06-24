@@ -28,11 +28,13 @@ namespace HAESticker
         private bool holding = false;
         private bool folding = false;
 
-        //private int MINIMUM_WIDTH = 300;
+        private int MINIMUM_WIDTH = 300;
         private int MINIMUM_HEIGHT = 26;
         private double OPACITY_RATE = 0.01;
 
         public StickerVO stickerVO;
+
+        private HAEMainForm haeMainForm;
 
         HAESQLiteQuery haeSQLiteQuery = new HAESQLiteQuery();
 
@@ -51,6 +53,18 @@ namespace HAESticker
 
             initEventHandler();
         }
+
+        public HAEForm(StickerVO vo, HAEMainForm form)
+        {
+            InitializeComponent();
+
+            stickerVO = vo;
+
+            haeMainForm = form;
+
+            initEventHandler();
+        }
+
 
         private void initSticker()
         {
@@ -253,6 +267,7 @@ namespace HAESticker
 
         private void pbBtnClose_Click(object sender, EventArgs e)
         {
+            haeMainForm.removeSticker(stickerVO.FormId);
             this.Close();
         }
 
@@ -275,8 +290,9 @@ namespace HAESticker
 
         private void pbBtnHide_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
-            tbarOpacity.redrawTrackBall();
+            //최소화 버튼은 테스트 해보니 불 필요해 보임, 이보다 폰트 변경 기능을 적용하는게 나을 듯
+            //this.WindowState = FormWindowState.Minimized;
+            //tbarOpacity.redrawTrackBall();
         }
 
         private void pbBtnClose_MouseHover(object sender, EventArgs e)
@@ -445,8 +461,6 @@ namespace HAESticker
 
         private void HAEForm_Deactivate(object sender, EventArgs e)
         {
-            //포커스가 변경되는 경우, sticker 입력된 내용을 저장
-            saveStickerInfo();
         }
 
         private void HAEForm_Load(object sender, EventArgs e)
@@ -454,7 +468,7 @@ namespace HAESticker
             initSticker();
         }
 
-        private void saveStickerInfo()
+        public void saveStickerInfo()
         {
             switch (stickerVO.IudFlag)
             {
