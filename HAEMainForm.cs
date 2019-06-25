@@ -22,11 +22,11 @@ namespace HAESticker
         private int border = 4;
         private Size previousSize;
         private Point previousLocation ;
-        private Size previousFoldingSize;
+        //private Size previousFoldingSize;
         private Point offset;
         private bool maximizied = false;
         private bool holding = false;
-        private bool folding = false;
+        //private bool folding = false;
         //private int MINIMUM_WIDTH = 300;
         private int MINIMUM_HEIGHT = 26;
 
@@ -82,6 +82,8 @@ namespace HAESticker
                     stickerVO.FormWidth = Convert.ToInt32(dr["form_width"]);
                     stickerVO.FormHeight = Convert.ToInt32(dr["form_height"]);
                     stickerVO.FormOpacity = Convert.ToInt32(dr["form_opacity"]);
+                    stickerVO.FormPrevWidth = Convert.ToInt32(dr["prev_form_width"]);
+                    stickerVO.FormPrevHeight = Convert.ToInt32(dr["prev_form_height"]);
                     stickerVO.Title = Convert.ToString(dr["title"]);
                     stickerVO.Contents = Convert.ToString(dr["contents"]);
                     stickerVO.FoldYn = Convert.ToString(dr["fold_yn"]);
@@ -358,117 +360,6 @@ namespace HAESticker
 
         private void pbLogo_MouseHover(object sender, EventArgs e)
         {
-            //this.Cursor = Cursors.Default;
-            //if (holding)
-            //{
-            //    pbLogo.Image = Properties.Resources.btnHoldingHover;
-            //}
-            //else
-            //{
-            //    pbLogo.Image = Properties.Resources.btnHolderHover;
-            //}
-        }
-
-        private void pbLogo_MouseClick(object sender, MouseEventArgs e)
-        {
-            //if (holding)
-            //{
-            //    pbLogo.Image = Properties.Resources.btnHolder;
-            //    holding = false;
-            //}
-            //else
-            //{
-            //    pbLogo.Image = Properties.Resources.btnHolding;
-            //    holding = true;
-            //}
-        }
-
-        private void pbLogo_MouseLeave(object sender, EventArgs e)
-        {
-            //if (holding)
-            //{
-            //    pbLogo.Image = Properties.Resources.btnHolding;
-            //}
-            //else
-            //{
-            //    pbLogo.Image = Properties.Resources.btnHolder;
-            //}
-        }
-
-        private void lblFormTitle_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void lblFormTitle_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Left)
-            {
-                if (folding)
-                {
-                    //this.Width = previousFoldingSize.Width;
-                    this.Height = previousFoldingSize.Height;
-                    folding = false;
-                }
-                else
-                {
-                    previousFoldingSize = this.Size;
-                    //this.Width = MINIMUM_WIDTH;
-                    this.Height = MINIMUM_HEIGHT;
-                    folding = true;
-                }
-            }
-            else
-            {
-                HAETitlePopup titlePopup = new HAETitlePopup();
-                titlePopup.Title = lblFormTitle.Text.ToString();
-                if(titlePopup.ShowDialog() == DialogResult.OK)
-                {
-                    lblFormTitle.Text = titlePopup.title;
-                }
-            }
-        }
-        
-        private void tbOpacity_MouseHover(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-        }
-
-        private void tbarOpacity_MouseLeave(object sender, EventArgs e)
-        {
-        }
-
-        private void tbarOpacity_ValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void pbTrash_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbTrash_MouseDown(object sender, MouseEventArgs e)
-        {
-        }
-
-        private void pbTrash_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbTrash_MouseLeave(object sender, EventArgs e)
-        {
-        }
-
-        private void tbarOpacity_ValueChangeEvent(object sender, EventArgs e)
-        {
-        }
-
-        private void HAEForm_Activated(object sender, EventArgs e)
-        {            
-        }
-
-        private void HAEForm_Deactivate(object sender, EventArgs e)
-        {
         }
 
         private void HAEForm_Load(object sender, EventArgs e)
@@ -506,7 +397,7 @@ namespace HAESticker
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void openNewSticker()
         {
             StickerVO stickerVO = new StickerVO();
             stickerVO.IudFlag = "I";
@@ -523,9 +414,9 @@ namespace HAESticker
             h.Focus();
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-
+            openNewSticker();
         }
     }
 }

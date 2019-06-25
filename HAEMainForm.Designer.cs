@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pnlCaption = new System.Windows.Forms.Panel();
             this.pnlFormTitle = new System.Windows.Forms.Panel();
             this.lblFormTitle = new System.Windows.Forms.Label();
@@ -39,6 +40,23 @@
             this.pbBtnHide = new System.Windows.Forms.PictureBox();
             this.tblSticker = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rdoTitleContents = new System.Windows.Forms.RadioButton();
+            this.rdoContents = new System.Windows.Forms.RadioButton();
+            this.rdoTitle = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menu2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlCaption.SuspendLayout();
             this.pnlFormTitle.SuspendLayout();
             this.tpnlLogo.SuspendLayout();
@@ -48,6 +66,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBtnExpand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBtnHide)).BeginInit();
             this.tblSticker.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlCaption
@@ -60,7 +84,7 @@
             this.pnlCaption.Location = new System.Drawing.Point(2, 0);
             this.pnlCaption.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCaption.Name = "pnlCaption";
-            this.pnlCaption.Size = new System.Drawing.Size(920, 24);
+            this.pnlCaption.Size = new System.Drawing.Size(698, 24);
             this.pnlCaption.TabIndex = 0;
             // 
             // pnlFormTitle
@@ -72,7 +96,7 @@
             this.pnlFormTitle.Location = new System.Drawing.Point(24, 0);
             this.pnlFormTitle.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.pnlFormTitle.Name = "pnlFormTitle";
-            this.pnlFormTitle.Size = new System.Drawing.Size(824, 24);
+            this.pnlFormTitle.Size = new System.Drawing.Size(602, 24);
             this.pnlFormTitle.TabIndex = 3;
             // 
             // lblFormTitle
@@ -83,12 +107,10 @@
             this.lblFormTitle.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lblFormTitle.Name = "lblFormTitle";
             this.lblFormTitle.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblFormTitle.Size = new System.Drawing.Size(824, 24);
+            this.lblFormTitle.Size = new System.Drawing.Size(602, 24);
             this.lblFormTitle.TabIndex = 0;
             this.lblFormTitle.Text = "Sticker Main";
             this.lblFormTitle.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.lblFormTitle.Click += new System.EventHandler(this.lblFormTitle_Click);
-            this.lblFormTitle.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lblFormTitle_MouseDoubleClick);
             // 
             // tpnlLogo
             // 
@@ -114,8 +136,6 @@
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbLogo.TabIndex = 2;
             this.pbLogo.TabStop = false;
-            this.pbLogo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pbLogo_MouseClick);
-            this.pbLogo.MouseLeave += new System.EventHandler(this.pbLogo_MouseLeave);
             this.pbLogo.MouseHover += new System.EventHandler(this.pbLogo_MouseHover);
             // 
             // tpnlFormBtn
@@ -128,7 +148,7 @@
             this.tpnlFormBtn.Controls.Add(this.pbBtnExpand, 1, 0);
             this.tpnlFormBtn.Controls.Add(this.pbBtnHide, 0, 0);
             this.tpnlFormBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tpnlFormBtn.Location = new System.Drawing.Point(848, 0);
+            this.tpnlFormBtn.Location = new System.Drawing.Point(626, 0);
             this.tpnlFormBtn.Margin = new System.Windows.Forms.Padding(0);
             this.tpnlFormBtn.Name = "tpnlFormBtn";
             this.tpnlFormBtn.RowCount = 1;
@@ -195,41 +215,225 @@
             this.tblSticker.RowCount = 2;
             this.tblSticker.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tblSticker.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblSticker.Size = new System.Drawing.Size(924, 398);
+            this.tblSticker.Size = new System.Drawing.Size(702, 254);
             this.tblSticker.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnCount = 6;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 225F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tableLayoutPanel1.Controls.Add(this.lblSearch, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 27);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(920, 368);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(698, 224);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSearch.ForeColor = System.Drawing.Color.White;
+            this.lblSearch.Image = global::HAESticker.Properties.Resources.btnColor;
+            this.lblSearch.Location = new System.Drawing.Point(551, 64);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(68, 26);
+            this.lblSearch.TabIndex = 4;
+            this.lblSearch.Text = "검색";
+            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSearch.Click += new System.EventHandler(this.lblSearch_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 4);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.GridColor = System.Drawing.Color.White;
+            this.dataGridView1.Location = new System.Drawing.Point(5, 93);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(688, 128);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rdoTitleContents);
+            this.panel1.Controls.Add(this.rdoContents);
+            this.panel1.Controls.Add(this.rdoTitle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 64);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(225, 26);
+            this.panel1.TabIndex = 1;
+            // 
+            // rdoTitleContents
+            // 
+            this.rdoTitleContents.AutoSize = true;
+            this.rdoTitleContents.Location = new System.Drawing.Point(134, 7);
+            this.rdoTitleContents.Name = "rdoTitleContents";
+            this.rdoTitleContents.Size = new System.Drawing.Size(77, 16);
+            this.rdoTitleContents.TabIndex = 2;
+            this.rdoTitleContents.Text = "제목+내용";
+            this.rdoTitleContents.UseVisualStyleBackColor = true;
+            // 
+            // rdoContents
+            // 
+            this.rdoContents.AutoSize = true;
+            this.rdoContents.Location = new System.Drawing.Point(67, 7);
+            this.rdoContents.Name = "rdoContents";
+            this.rdoContents.Size = new System.Drawing.Size(47, 16);
+            this.rdoContents.TabIndex = 1;
+            this.rdoContents.Text = "내용";
+            this.rdoContents.UseVisualStyleBackColor = true;
+            // 
+            // rdoTitle
+            // 
+            this.rdoTitle.AutoSize = true;
+            this.rdoTitle.Checked = true;
+            this.rdoTitle.Location = new System.Drawing.Point(3, 7);
+            this.rdoTitle.Name = "rdoTitle";
+            this.rdoTitle.Size = new System.Drawing.Size(47, 16);
+            this.rdoTitle.TabIndex = 0;
+            this.rdoTitle.TabStop = true;
+            this.rdoTitle.Text = "제목";
+            this.rdoTitle.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox1.Location = new System.Drawing.Point(230, 67);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(315, 21);
+            this.textBox1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 4);
+            this.panel2.Controls.Add(this.tableLayoutPanel2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(2, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(694, 64);
+            this.panel2.TabIndex = 6;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label4, 3, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(694, 64);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 64);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "새메모";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Location = new System.Drawing.Point(67, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 64);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "모두펼치기/접기";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(131, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 36);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "모두숨기기/보이기";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(195, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 64);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "좌측/우측\r\n정렬하기";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu1,
+            this.menu2});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(111, 48);
+            // 
+            // menu2
+            // 
+            this.menu2.Name = "menu2";
+            this.menu2.Size = new System.Drawing.Size(110, 22);
+            this.menu2.Text = "종료";
+            // 
+            // menu1
+            // 
+            this.menu1.Name = "menu1";
+            this.menu1.Size = new System.Drawing.Size(110, 22);
+            this.menu1.Text = "새메모";
             // 
             // HAEMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(91)))), ((int)(((byte)(157)))));
-            this.ClientSize = new System.Drawing.Size(926, 400);
+            this.ClientSize = new System.Drawing.Size(704, 256);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.tblSticker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "HAEMainForm";
             this.Padding = new System.Windows.Forms.Padding(1);
-            this.ShowInTaskbar = false;
-            this.Text = "Form1";
-            this.TopMost = true;
-            this.Activated += new System.EventHandler(this.HAEForm_Activated);
+            this.Text = "Sticker Main";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HAEMainForm_FormClosing);
             this.Load += new System.EventHandler(this.HAEForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HAEForm_MouseDown);
@@ -246,6 +450,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBtnExpand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbBtnHide)).EndInit();
             this.tblSticker.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -262,6 +475,23 @@
         private System.Windows.Forms.Label lblFormTitle;
         private System.Windows.Forms.TableLayoutPanel tblSticker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rdoTitleContents;
+        private System.Windows.Forms.RadioButton rdoContents;
+        private System.Windows.Forms.RadioButton rdoTitle;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem menu2;
+        private System.Windows.Forms.ToolStripMenuItem menu1;
     }
 }
 

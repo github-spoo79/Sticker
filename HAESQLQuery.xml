@@ -28,28 +28,30 @@
     , @hidden_yn, @fold_yn, @rgst_dt, @updt_dt)
   </sql>
   <sql id="updateStickerInfo">
+    <![CDATA[
     UPDATE sticker
-    SET pos_x = @pos_x
-    , pos_y = @pos_y
-    , form_width = @form_width
-    , form_height = @form_height
-    , prev_form_width = @prev_form_width
-    , prev_form_height = @prev_form_height
-    , form_opacity = @form_opacity
-    , title = @title
-    , contents_rtf = @contents_rtf
-    , contents = @contents
-    , hidden_yn = @hidden_yn
-    , fold_yn = @fold_yn
-    , updt_dt = @updt_dt
-    WHERE form_id = @form_id
+    SET    pos_x            = @pos_x
+         , pos_y            = @pos_y
+         , form_width       = @form_width
+         , form_height      = @form_height
+         , prev_form_width  = @prev_form_width
+         , prev_form_height = @prev_form_height
+         , form_opacity     = @form_opacity
+         , title            = @title
+         , contents_rtf     = @contents_rtf
+         , contents         = @contents
+         , hidden_yn        = @hidden_yn
+         , fold_yn          = @fold_yn
+         , updt_dt          = @updt_dt
+    WHERE  form_id          = @form_id
+    ]]>
   </sql>
   <sql id="deleteStickerInfo">
     UPDATE sticker
-    SET del_yn = 'Y'
-    , del_dt = @del_dt
-    , updt_dt = @updt_dt
-    WHERE form_id = @form_id
+    SET    del_yn  = 'Y'
+         , del_dt  = @del_dt
+         , updt_dt = @updt_dt
+    WHERE  form_id = @form_id
   </sql>
   <sql id="truncateStickerInfo">
     DELETE FROM sticker WHERE form_id = @form_id

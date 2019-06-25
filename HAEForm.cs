@@ -30,6 +30,10 @@ namespace HAESticker
 
         private int MINIMUM_WIDTH = 300;
         private int MINIMUM_HEIGHT = 26;
+
+        private int DEFAULT_WIDTH = 300;
+        private int DEFAULT_HEIGHT = 200;
+        
         private double OPACITY_RATE = 0.01;
 
         public StickerVO stickerVO;
@@ -68,11 +72,14 @@ namespace HAESticker
 
         private void initSticker()
         {
-            this.Width = stickerVO.FormWidth;
-            this.Height = stickerVO.FormHeight;
+            Width = stickerVO.FormWidth;
+            Height = stickerVO.FormHeight;
             lblFormTitle.Text = stickerVO.Title;
             rtbContents.Text = stickerVO.Contents;
             tbarOpacity.Value = stickerVO.FormOpacity;
+            previousFoldingSize.Width = stickerVO.FormPrevWidth;
+            previousFoldingSize.Height = stickerVO.FormPrevHeight;
+            if(stickerVO.FoldYn == "Y") { folding = true; }
 
             tbarOpacity.redrawTrackBall();
         }
@@ -542,12 +549,12 @@ namespace HAESticker
             vo.set("form_width", this.Width);
             vo.set("form_height", this.Height);
             vo.set("prev_form_width", this.Width);
-            vo.set("prev_form_height", this.Height);
+            vo.set("prev_form_height", previousFoldingSize.Height);
             vo.set("form_opacity", tbarOpacity.Value);
             vo.set("title", lblFormTitle.Text);
             vo.set("contents", rtbContents.Text);
             vo.set("contents_rtf", rtbContents.Text);
-            vo.set("fold_yn", "N");
+            vo.set("fold_yn", (folding)? "Y":"N");
             vo.set("hidden_yn", "N");
             vo.set("updt_dt", DateTime.Today.ToLongDateString());
             haeSQLiteQuery.updateStickerInfo(vo);
