@@ -28,11 +28,11 @@ namespace HAESticker
         private bool holding = false;
         private bool folding = false;
 
-        private int MINIMUM_WIDTH = 300;
+        //private int MINIMUM_WIDTH = 300;
         private int MINIMUM_HEIGHT = 26;
 
-        private int DEFAULT_WIDTH = 300;
-        private int DEFAULT_HEIGHT = 200;
+        //private int DEFAULT_WIDTH = 300;
+        //private int DEFAULT_HEIGHT = 200;
         
         private double OPACITY_RATE = 0.01;
 
@@ -396,19 +396,7 @@ namespace HAESticker
         {
             if(e.Button == MouseButtons.Left)
             {
-                if (folding)
-                {
-                    //this.Width = previousFoldingSize.Width;
-                    this.Height = previousFoldingSize.Height;
-                    folding = false;
-                }
-                else
-                {
-                    previousFoldingSize = this.Size;
-                    //this.Width = MINIMUM_WIDTH;
-                    this.Height = MINIMUM_HEIGHT;
-                    folding = true;
-                }
+                foldAndUnfoldSticker();
             }
             else
             {
@@ -443,7 +431,11 @@ namespace HAESticker
         private void pbTrash_MouseDown(object sender, MouseEventArgs e)
         {
             HAEFormPopup popup = new HAEFormPopup();
-            popup.ShowDialog();
+            if(popup.ShowDialog() == DialogResult.OK)
+            {
+                stickerVO.IudFlag = "D";
+                saveStickerInfo();
+            }
         }
 
         private void pbTrash_MouseHover(object sender, EventArgs e)
@@ -485,21 +477,16 @@ namespace HAESticker
                 case "U":
                     updateStickerInfo();
                     break;
+                case "D":
+                    deleteStickerInfo();
+                    break;
+                default:
+                    break;
             }
         }
 
         private void insertStickerInfo()
         {
-            /*
-            INSERT INTO sticker(form_id, pos_x, pos_y, form_width
-            , form_height, prev_form_width, prev_form_height
-            , form_opacity, title, contents_rft, contents
-            , hidden_yn, fold_yn, rgst_dt, updt_dt)
-            VALUES(@form_id, @pos_x, @pos_y, @form_width
-            , @form_height, @prev_form_width, @prev_form_height
-            , @form_opacity, @title, @contents_rtf, @contents
-            , @hidden_yn, @fold_yn, @rgst_dt, @updt_dt)
-            */
             HAESQLiteVO vo = new HAESQLiteVO();
             vo.set("form_id", stickerVO.FormId);
             vo.set("pos_x", this.Location.X);
@@ -525,23 +512,6 @@ namespace HAESticker
 
         private void updateStickerInfo()
         {
-            /*
-            UPDATE sticker
-            SET pos_x = @pos_x
-            , pos_y = @pos_y
-            , form_width = @form_width
-            , form_height = @form_height
-            , prev_form_width = @prev_form_width
-            , prev_form_height = @prev_form_height
-            , form_opacity = @form_opacity
-            , title = @title
-            , contents_rft = @contents_rft
-            , contents = @contents
-            , hidden_yn = @hidden_yn
-            , fold_yn = @fold_yn
-            , updt_dt = @updt_dt
-            WHERE form_id = @form_id
-            */
             HAESQLiteVO vo = new HAESQLiteVO();
             vo.set("form_id", stickerVO.FormId);
             vo.set("pos_x", this.Location.X);
@@ -558,6 +528,42 @@ namespace HAESticker
             vo.set("hidden_yn", "N");
             vo.set("updt_dt", DateTime.Today.ToLongDateString());
             haeSQLiteQuery.updateStickerInfo(vo);
+        }
+
+        private void deleteStickerInfo()
+        {
+            HAESQLiteVO vo = new HAESQLiteVO();
+            vo.set("form_id", stickerVO.FormId);
+            vo.set("del_yn", "Y");
+            vo.set("del_dt", DateTime.Today.ToLongDateString());
+            vo.set("updt_dt", DateTime.Today.ToLongDateString());
+            if(haeSQLiteQuery.deleteStickerInfo(vo) > 0)
+            {
+                this.Close();
+            }
+        }
+
+        public void foldAndUnfoldSticker()
+        {
+            if (folding)
+            {
+                //this.Width = previousFoldingSize.Width;
+                this.Height = previousFoldingSize.Height;
+                folding = false;
+            }
+            else
+            {
+                previousFoldingSize = this.Size;
+                //this.Width = MINIMUM_WIDTH;
+                this.Height = MINIMUM_HEIGHT;
+                folding = true;
+            }
+        }
+
+        public void foldAndUnfoldSticker(bool foldYn)
+        {
+            folding = foldYn;
+            foldAndUnfoldSticker();
         }
     }
 }

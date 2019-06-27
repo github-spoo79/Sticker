@@ -26,9 +26,9 @@ namespace HAESticker
         private Point offset;
         private bool maximizied = false;
         private bool holding = false;
-        //private bool folding = false;
+        private bool folding = false;
         //private int MINIMUM_WIDTH = 300;
-        private int MINIMUM_HEIGHT = 26;
+        private int MINIMUM_HEIGHT = 26;        
 
         List<HAEForm> haeFormList = new List<HAEForm>();
         
@@ -417,6 +417,22 @@ namespace HAESticker
         private void label1_Click(object sender, EventArgs e)
         {
             openNewSticker();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFoldAndUnfold_Click(object sender, EventArgs e)
+        {
+            for (int idx = 0; idx < haeFormList.Count; idx++)
+            {
+                HAEForm h = haeFormList[idx] as HAEForm;
+                folding = !folding;
+                h.stickerVO.FoldYn = (folding)?"Y":"N";
+                h.foldAndUnfoldSticker(folding);
+            }
         }
     }
 }

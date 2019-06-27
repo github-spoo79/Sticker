@@ -50,13 +50,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblFoldAndUnfold = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menu2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menu1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlCaption.SuspendLayout();
             this.pnlFormTitle.SuspendLayout();
             this.tpnlLogo.SuspendLayout();
@@ -343,7 +343,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.lblFoldAndUnfold, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.label3, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.label4, 3, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -367,16 +367,17 @@
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // lblFoldAndUnfold
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(67, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 64);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "모두펼치기/접기";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFoldAndUnfold.AutoSize = true;
+            this.lblFoldAndUnfold.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFoldAndUnfold.Location = new System.Drawing.Point(67, 0);
+            this.lblFoldAndUnfold.Name = "lblFoldAndUnfold";
+            this.lblFoldAndUnfold.Size = new System.Drawing.Size(58, 64);
+            this.lblFoldAndUnfold.TabIndex = 1;
+            this.lblFoldAndUnfold.Text = "모두펼치기/접기";
+            this.lblFoldAndUnfold.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblFoldAndUnfold.Click += new System.EventHandler(this.lblFoldAndUnfold_Click);
             // 
             // label3
             // 
@@ -386,6 +387,7 @@
             this.label3.Size = new System.Drawing.Size(53, 36);
             this.label3.TabIndex = 2;
             this.label3.Text = "모두숨기기/보이기";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -410,17 +412,17 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(111, 48);
             // 
-            // menu2
-            // 
-            this.menu2.Name = "menu2";
-            this.menu2.Size = new System.Drawing.Size(110, 22);
-            this.menu2.Text = "종료";
-            // 
             // menu1
             // 
             this.menu1.Name = "menu1";
             this.menu1.Size = new System.Drawing.Size(110, 22);
             this.menu1.Text = "새메모";
+            // 
+            // menu2
+            // 
+            this.menu2.Name = "menu2";
+            this.menu2.Size = new System.Drawing.Size(110, 22);
+            this.menu2.Text = "종료";
             // 
             // HAEMainForm
             // 
@@ -485,7 +487,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblFoldAndUnfold;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NotifyIcon notifyIcon1;

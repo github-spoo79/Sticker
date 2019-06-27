@@ -63,5 +63,9 @@ namespace HAESticker
         {
             this.Close();
         }
+
+        private void lblCancel_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
