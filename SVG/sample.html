@@ -8,13 +8,15 @@
     <script type="text/javascript" src="d3.min.js"></script>
     <script type="text/javascript">
     var relationState = 1;    
-    var offsetX, offsetY;
+    var offsetX;
+	var offsetY;
     var marginRight  = 4;
     var marginBottom = 38;
-    var resizeMarginRight = 14;
-    var resizeMarginBottom = 5;
-    var defaultTableWidth = 200;
-    var defaultTableHeight = 300;
+    var resizeMarginRight     = 14;
+    var resizeMarginBottom    = 5;
+    var defaultTableWidth     = 50;
+    var defaultTableHeight    = 100;
+	var defaultMarginRelation = 20;	
     //var resizeCoords = "M 296 495 L 306 495 L 306 485 Z";
     
     var dragMoveHandler = d3.drag().on("start", 
@@ -27,7 +29,17 @@
                                         //move entity
                                         d3.select(this).attr("x", d3.event.x + offsetX)
                                                        .attr("y", d3.event.y + offsetY);
-                                           
+										
+										//var objId = d3.select(this).attr("id");
+										//console.log("drag entity id :=" + objId);
+										var objEntity = d3.select(this);
+										var objEdge = d3.select("#" + d3.select(this).attr("id") + "edge001");
+										//if(d3.select("#" + objId + "edge001").size() > 0) {
+										if(objEdge.size() > 0) {
+										    //console.log("points :=" + d3.select("#" + d3.select(this).attr("id") + "edge001").attr("points"));
+											//console.log("d3.event.x :=" + d3.event.x + " , " + "d3.event.y :=" + d3.event.y);
+											redrawEdgePath(objEntity, objEdge);
+										}
                                     })
                                .on("end", 
                                     function() {
@@ -61,21 +73,25 @@
                                                      } 
                                                      
                                                      if(redrawResizeX && redrawResizeY) {
-                                                         d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
-                                                                                 , d3.event.x - resizeMarginRight
-                                                                                 , d3.event.y - resizeMarginBottom));
+                                                         //d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
+														 d3.select(this).attr("points", getRedrawResizePath(d3.select(this).attr("points")
+                                                                                      , d3.event.x - resizeMarginRight
+                                                                                      , d3.event.y - resizeMarginBottom));
                                                          
                                                      }else{
                                                          if(redrawResizeX){
-                                                             d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
-                                                                                     , d3.event.x - resizeMarginRight
-                                                                                     , -1)); //y축이 변경되지 않는 경우 -1로 값을 설정
+                                                             //d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
+															 //d3.select(this).attr("points", redrawResizePath(d3.select(this).attr("d")
+															 d3.select(this).attr("points", getRedrawResizePath(d3.select(this).attr("points")
+                                                                                          , d3.event.x - resizeMarginRight
+                                                                                          , -1)); //y축이 변경되지 않는 경우 -1로 값을 설정
                                                          }
                                                          
                                                          if(redrawResizeY){
-                                                             d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
-                                                                                     , -1
-                                                                                     , d3.event.y - resizeMarginBottom));
+                                                             //d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
+															 d3.select(this).attr("points", getRedrawResizePath(d3.select(this).attr("points")
+                                                                                          , -1
+                                                                                          , d3.event.y - resizeMarginBottom));
                                                          }
                                                      }
                                                 })
@@ -84,145 +100,105 @@
                                                  });
 
     
-    function redrawResizePath(data, x, y)
+	function redrawEdgePath(objEntity, objEdge)
+	{
+	    //redrawEdgePath(objId, d3.event.x + offsetX, d3.event.y + offsetY);
+		//console.log("x :=" + x + " , y :=" + y);
+		var datas = (objEdge.attr("points")).split(",");
+		datas[0] = parseFloat(objEntity.attr("x")) + parseFloat(objEntity.attr("width"));
+		datas[1] = ((parseFloat(objEntity.attr("height"))) / 2) + parseFloat(objEntity.attr("y"));
+		datas[2] = datas[0] + 20;
+		datas[3] = datas[1];
+		objEdge.attr("points", datas[0] + "," + datas[1] + "," + datas[2] + "," + datas[3]);
+	}
+	
+	function redrawEdgePath(objEntity, objEdge, edgeFlag)
+	{
+		if(edgeFlag == null) { edgeFlag = "0"; }
+		var datas;
+		switch(edgeFlag)
+		{
+			case "0":
+				var datas = (objEdge.attr("points")).split(",");
+				datas[0] = parseFloat(objEntity.attr("x")) + parseFloat(objEntity.attr("width"));
+				datas[1] = ((parseFloat(objEntity.attr("height"))) / 2) + parseFloat(objEntity.attr("y"));
+				datas[2] = datas[0] + 20;
+				datas[3] = datas[1];
+				objEdge.attr("points", datas[0] + "," + datas[1] + "," + datas[2] + "," + datas[3]);
+			    break;
+			case "1":
+			    break;
+			case "3":
+			    break;
+		}
+	    //redrawEdgePath(objId, d3.event.x + offsetX, d3.event.y + offsetY);
+		//console.log("x :=" + x + " , y :=" + y);
+	}
+	
+	function redrawRelationshipPath()
+	{
+	    
+	}
+	
+    function getRedrawResizePath(data, x, y)
     {   
-        var coords = "";    
-        s = data.split(" ");
-        if(x != -1){
-            s[1] = x;
-            s[4] = x + 10;
-            s[7] = x + 10;
-        }
-
-        if(y != -1){
-            s[2] = y;
-            s[5] = y;
-            s[8] = y - 10;
-        }
-        for(var i = 0 ; i < s.length; i++){
-            coords += s[i] + " "; 
-        }
-        return coords;
+	    var datas = data.split(",");
+		if(x != -1){
+		    datas[0] = x;  
+			datas[2] = x + 10;
+			datas[4] = x + 10;
+		}
+		
+		if(y != -1){
+		    datas[1] = y;
+			datas[3] = y;
+			datas[5] = y - 10;
+		}
+		var coords;
+		for(var i = 0; i < datas.length; i++){
+		    coords += datas[i] + ",";
+		}
+		return datas;
     }
     
-    function redrawRelationPath(start, middle, end){
+    function redrawRelationPath(start, middle, end)
+	{
         return start.x + "," + start.y + "," + middle.x1 + "," + middle.y1 + "," +middle.x2 + "," + middle.y2 + "," + end.x + "," + end.y;
     }
+	
+	function drawEdgePath(objEntity) 
+	{
+	    var edge = new Object();
+		edge.x = parseFloat(objEntity.attr("x")) + parseFloat(objEntity.attr("width"));
+		edge.y = parseFloat(objEntity.attr("y")) + (parseFloat(objEntity.attr("height")) / 2);
+		
+		d3.select("svg").append("polyline")
+		                .attr("id", objEntity.attr("id")+ "edge001")
+						.attr("fill", "none")
+						.attr("stroke", "#002C5F")
+						.attr("stroke-width", "2")
+						.attr("points", edge.x + "," + edge.y + "," + (edge.x + 20) + "," + edge.y);
+	}
     
     var onRelation = false;
     var parentEntity = new Object();
     var childEntity = new Object();
-    
-    
-    function clickEventHandler(d, i){
-        d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("stroke-width", "3");
-    
-        onRelation = !(onRelation);
-        var draw = false;
-        if(onRelation) {
-            console.log("select first entity");
-            parentEntity.id = d3.select(this).attr("id");
-            parentEntity.x = d3.select(this).attr("x");
-            parentEntity.y = d3.select(this).attr("y");
-            parentEntity.width = d3.select(this).attr("width");
-            parentEntity.height = d3.select(this).attr("height");
-        }else{
-            console.log("select second entity");
-            childEntity.id = d3.select(this).attr("id");
-            childEntity.x = d3.select(this).attr("x");
-            childEntity.y = d3.select(this).attr("y");
-            childEntity.width = d3.select(this).attr("width");
-            childEntity.height = d3.select(this).attr("height");
-            draw = true;
-        }
-        
-        if(draw){
-            //d3.select(this).attr("stroke-width", "0");
-            console.log("start draw relation line");
-            var startPoint = new Object();
-            var middlePoint = new Object();
-            var endPoint = new Object();          
-            
-            //childEntity x축이 parentEntity의 오른쪽으로 떨어져 있는 경우
-            if(parseFloat(parentEntity.x) + parseFloat(parentEntity.width) < childEntity.x){     
-                console.log("draw right direction relation..");
-                startPoint.x = parseFloat(parentEntity.x) + parseFloat(parentEntity.width);
-                startPoint.y = parseFloat(parentEntity.y) + parseFloat(parentEntity.height) / 2;
-                
-                endPoint.x = parseFloat(childEntity.x);
-                endPoint.y = parseFloat(childEntity.y) + parseFloat(childEntity.height) / 2;
-                
-                middlePoint.x1 = startPoint.x + (endPoint.x - startPoint.x) / 2;
-                middlePoint.y1 = startPoint.y;
-                middlePoint.x2 = middlePoint.x1;
-                middlePoint.y2 = endPoint.y;                
-                
-                d3.select("svg").append("polyline")
-                                .attr("id", "relation" + parentEntity.id + "TO" + childEntity.id)
-                                .attr("fill", "none")
-                                .attr("stroke", "#002C5F")
-                                .attr("stroke-width", "2")
-                                .attr("points", redrawRelationPath(startPoint, middlePoint, endPoint));
-                
-            //childEntity x축이 parentEntity의 왼쪽에 있는 경우
-            }else if(parseFloat(childEntity.x) + parseFloat(childEntity.width) < parentEntity.x) {
-                console.log("draw left direction relation..");
-                startPoint.x = parseFloat(parentEntity.x);
-                startPoint.y = parseFloat(parentEntity.y) + parseFloat(parentEntity.height) / 2;
-                
-                endPoint.x = parseFloat(childEntity.x) + parseFloat(childEntity.width);
-                endPoint.y = parseFloat(childEntity.y) + parseFloat(childEntity.height) / 2;
-                
-                middlePoint.x1 = endPoint.x + (startPoint.x - endPoint.x) / 2;
-                middlePoint.y1 = startPoint.y;
-                middlePoint.x2 = middlePoint.x1;
-                middlePoint.y2 = endPoint.y;
-                
-                d3.select("svg").append("polyline")
-                                .attr("id", "relation" + parentEntity.id + "TO" + childEntity.id)
-                                .attr("fill", "none")
-                                .attr("stroke", "#002C5F")
-                                .attr("stroke-width", "2")
-                                .attr("points", redrawRelationPath(startPoint, middlePoint, endPoint));
-            }
-            
-            /*            
-            if(parentEntity.x < childEntity.x) {
-                
-                //collapse x position parentEntity and childEntity
-                if(parseFloat(parentEntity.x) + parseFloat(parentEntity.width) > childEntity.x){
-                      // childEntity y position < 
-                
-                }else{
-                    startPoint.x = parseFloat(parentEntity.x) + parseFloat(parentEntity.width);
-                    startPoint.y = parseFloat(parentEntity                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           .y) + (parseFloat(parentEntity.height) / 2);
-                    endPoint.x = parseFloat(childEntity.x);
-                    endPoint.y = parseFloat(childEntity.y) + (parseFloat(childEntity.height) / 2);
-                }                
-                
-            }else{
-                startPoint.x = parseFloat(parentEntity.x);
-                startPoint.y = parseFloat(parentEntity.y) + (parseFloat(parentEntity.height) / 2);
-                endPoint.x = parseFloat(childEntity.x) + parseFloat(childEntity.width);
-                endPoint.y = parseFloat(childEntity.y) + (parseFloat(childEntity.height) / 2);
-            }*/
-            //console.log(startPoint.x + "," + startPoint.y + "," +endPoint.x + "," + endPoint.y);
-            
-            //d3.select("svg").append("line")
-            //                .attr("id", "line" + parentEntity.id + childEntity.id)
-            //                .attr("x1", startPoint.x)
-            //                .attr("y1", startPoint.y)
-            //                .attr("x2", endPoint.x)
-            //                .attr("y2", endPoint.y)
-            //                .attr("stroke", "#002C5F")
-            //                .attr("stroke-width", "2");
-        }
-        //console.log("id :=" + d3.select(this).attr("id"));
-        //console.log("x :=" + d3.select(this).attr("x"));
-        //console.log("y :=" + d3.select(this).attr("y"));
-        //console.log("width :=" + d3.select(this).attr("width"));
-        //console.log("height :=" + d3.select(this).attr("height"));
-        //draw Table To Table Relation 1-1, 1-N 1-0        
+    function clickEventHandler(d, i)
+	{
+		var selected = d3.select(this).attr("selected");
+        //d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("stroke-width", "3");
+		//var selected = d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("selected");
+		console.log("selected :=" + selected);
+		if(selected == "false") 
+		{
+		    d3.select(this).attr("selected", "true");			
+		    d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("stroke-width", "5").attr("stroke-dasharray", "4,4");
+			drawEdgePath(d3.select(this));			
+			
+		} else {
+		    d3.select(this).attr("selected", "false");
+		    d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("stroke-width", "1");
+		}  
     }
     
     function initEvent()
@@ -231,15 +207,28 @@
         dragMoveHandler(d3.select("#tbl002"));
         dragResizeHandler(d3.select("#tbl001resize"));
         dragResizeHandler(d3.select("#tbl002resize"));
+		
         createTableLayout();
         //d3.select("#tbl001").on("click", aClick);
+		
         d3.select("#tbl001").on("click", clickEventHandler);
         d3.select("#tbl002").on("click", clickEventHandler);
         d3.select("#tbl003").on("click", clickEventHandler);
     }
-    
-    function createTableLayout(){
+	
+    function createTableLayout()
+	{
         // create tbl svg tag and named id 
+        // svgm
+	    // svgm.id
+	    // svgm.x
+	    // svgm.y
+	    // svgm.width
+	    // svgm.height
+	    // svgm.relation_top_count
+	    // svgm.relation_left_count
+	    // svgm.relation_right_count
+	    // svgm.relation_bottom_count
         d3.select("svg")
             .append("svg")
             .attr("id", "tbl003")
@@ -248,6 +237,7 @@
             .attr("width", "300")
             .attr("height", "500")
             .attr("relation", "0")
+			.attr("selected", "false")
             //.on("click", clickEventHandler)
             ;
         
@@ -255,6 +245,17 @@
         d3.select("#tbl003").append("g");
         
         // append table rect
+		// tablem
+		// tablem.id
+		// tablem.svgm_id
+		// tablem.width
+		// tablem.height
+		// tablem.fill
+		// tablem.stroke
+		// tablem.stroke_width
+		// tablem.logic_name
+		// tablem.physic_name
+		
         d3.select("#tbl003").select("g")        
             .append("rect")         
             .attr("id", "tbl003rect001")
@@ -265,6 +266,15 @@
             .attr("stroke-width", "0");
         
         // append column rect
+		// columnm
+		// columnm.id
+		// columnm.x
+		// columnm.y
+		// columnm.width
+		// columnm.height
+		// columnm.fill
+		// columnm.logic_name
+		// columnm.physic_name
         d3.select("#tbl003").select("g")        
             .append("rect")         
             .attr("id", "tbl003rect002")
@@ -325,6 +335,14 @@
         //    .attr("fill", "#002C5F")
         //    .attr("d", "M286 495 L296 495 L296 485")
         //    .attr("style", "cursor:nwse-resize");
+		
+		//polylined
+		//polylined.id
+		//polylined.svg_id
+		//polylined.fill
+		//polylined.points
+		//polylined.style
+		//♀
         d3.select("#tbl003").append("polyline")
                             .attr("id", "tbl003resize")
                             .attr("fill", "#002C5F")
@@ -338,44 +356,26 @@
     </script>
 </head>
 <body>
-    <svg width="1280" height="1024">
-        <!--
-        <svg id="tbl002" x="100" y="200" width="300" height="500">
-          <g>
-            <rect id="tbl002rect001" x="0" y="0" width="300" height="500" style="fill:rgb(0,44,95);"></rect>
-            <rect id="tbl002rect002" x="2" y="35" width="296" height="462" style="fill:rgb(255,255,255);"></rect>
-            <text x="10" y="25" style="fill:rgb(255, 255, 255);">사용자관리 마스터</text>
-            <text x="10" y="55" style="fill:rgb(0, 0, 0);">√ 사용자아이디</text>
-            <text x="10" y="85" style="fill:rgb(0, 0, 0);">사용자성명</text>
-            <text x="10" y="115" style="fill:rgb(0, 0, 0);">최종접속IP</text>
-            <text x="10" y="145" style="fill:rgb(0, 0, 0);">최종접속일시</text>
-            <text x="10" y="175" style="fill:rgb(0, 0, 0);">잠김여부</text>
-            <text x="10" y="205" style="fill:rgb(0, 0, 0);">최초등록일시</text>
-            <text x="10" y="235" style="fill:rgb(0, 0, 0);">최초등록자ID</text>
-            <text x="10" y="265" style="fill:rgb(0, 0, 0);">최종수정일시</text>
-            <text x="10" y="295" style="fill:rgb(0, 0, 0);">최초수정자ID</text>                      
-          </g>        
-          <path d="M286,495 L296,495 L296,485Z" id="tbl002resize" style="cursor:nwse-resize"></path>
-        </svg>
-        -->
-        <svg id="tbl001" x="10" y="10" width="300" height="500">
+    <input type="button" value="0-to-N">
+	<input type="button" value="1-to-N">
+    <svg width="100%" height="4096">
+        <svg id="tbl001" x="10" y="10" width="300" height="500" selected="false">
           <g>
             <rect id="tbl001rect001" x="0" y="0" width="300" height="500" style="fill:rgb(0,44,95);" stroke="#2D6BB3" stroke-width="0"></rect>
             <rect id="tbl001rect002" x="2" y="35" width="296" height="462" style="fill:rgb(255,255,255);"></rect>            
             <text x="10" y="25" style="fill:rgb(255, 255, 255);">메뉴관리 마스터</text>
-            <text x="10" y="55" style="fill:rgb(0, 0, 0);">메뉴코드</text>
-            <text x="10" y="85" style="fill:rgb(0, 0, 0);">메뉴명</text>
-            <text x="10" y="115" style="fill:rgb(0, 0, 0);">상위메뉴코드</text>
-            <text x="10" y="145" style="fill:rgb(0, 0, 0);">기본화면여부</text>
-            <text x="10" y="175" style="fill:rgb(0, 0, 0);">정렬순서</text>
-            <text x="10" y="205" style="fill:rgb(0, 0, 0);">삭제여부</text>
-            <text x="10" y="235" style="fill:rgb(0, 0, 0);">최초등록일시</text>
-            <text x="10" y="265" style="fill:rgb(0, 0, 0);">최초등록자ID</text>
-            <text x="10" y="295" style="fill:rgb(0, 0, 0);">최종수정일시</text>
-            <text x="10" y="325" style="fill:rgb(0, 0, 0);">최초수정자ID</text>          
+            <text x="10" y="55" style="fill:rgb(0, 0, 0);">＋메뉴코드</text>
+            <text x="10" y="85" style="fill:rgb(0, 0, 0);">－메뉴명</text>
+            <text x="10" y="115" style="fill:rgb(0, 0, 0);">－상위메뉴코드</text>
+            <text x="10" y="145" style="fill:rgb(0, 0, 0);">－기본화면여부</text>
+            <text x="10" y="175" style="fill:rgb(0, 0, 0);">－정렬순서</text>
+            <text x="10" y="205" style="fill:rgb(0, 0, 0);">－삭제여부</text>
+            <text x="10" y="235" style="fill:rgb(0, 0, 0);">－최초등록일시</text>
+            <text x="10" y="265" style="fill:rgb(0, 0, 0);">－최초등록자ID</text>
+            <text x="10" y="295" style="fill:rgb(0, 0, 0);">－최종수정일시</text>
+            <text x="10" y="325" style="fill:rgb(0, 0, 0);">－최초수정자ID</text>
           </g>
           <polyline id="tbl001resize" style="cursor:nwse-resize;" fill="#002C5F" points="286,495,296,495,296,485"></polyline>
-          <!--<path d="M286,495 L296,495 L296,485Z" id="tbl001resize" style="cursor:nwse-resize"></path>-->
         </svg>
     </svg>  
 </body>
