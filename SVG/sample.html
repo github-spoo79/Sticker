@@ -1,0 +1,385 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="x-ua-compatible" content="IE=11">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+    <title>SVG sample</title>   
+    <style type="text/css"></style>
+    <script type="text/javascript" src="d3.min.js"></script>
+    <script type="text/javascript">
+    var relationState = 1;    
+    var offsetX;
+	var offsetY;
+    var marginRight  = 4;
+    var marginBottom = 38;
+    var resizeMarginRight     = 14;
+    var resizeMarginBottom    = 5;
+    var defaultTableWidth     = 50;
+    var defaultTableHeight    = 100;
+	var defaultMarginRelation = 20;	
+    //var resizeCoords = "M 296 495 L 306 495 L 306 485 Z";
+    
+    var dragMoveHandler = d3.drag().on("start", 
+                                    function() {                                         
+                                        offsetX = d3.select(this).attr("x") - d3.event.x;
+                                        offsetY = d3.select(this).attr("y") - d3.event.y;
+                                    })
+                               .on("drag",
+                                    function() {
+                                        //move entity
+                                        d3.select(this).attr("x", d3.event.x + offsetX)
+                                                       .attr("y", d3.event.y + offsetY);
+										
+										//var objId = d3.select(this).attr("id");
+										//console.log("drag entity id :=" + objId);
+										var objEntity = d3.select(this);
+										var objEdge = d3.select("#" + d3.select(this).attr("id") + "edge001");
+										//if(d3.select("#" + objId + "edge001").size() > 0) {
+										if(objEdge.size() > 0) {
+										    //console.log("points :=" + d3.select("#" + d3.select(this).attr("id") + "edge001").attr("points"));
+											//console.log("d3.event.x :=" + d3.event.x + " , " + "d3.event.y :=" + d3.event.y);
+											redrawEdgePath(objEntity, objEdge);
+										}
+                                    })
+                               .on("end", 
+                                    function() {
+                                        //var obj = d3.select(this);
+                                    });
+    
+    var dragResizeHandler = d3.drag().on("start", function(){
+                                                      //console.log("resize start...");
+                                                  })
+                                     .on("drag" , function(){
+                                                     //resize entity                                     
+                                                     var obj = d3.select((this.parentNode));
+                                                     var objId = obj.attr("id");
+                                                     var objRect1 = d3.select("#" + objId + "rect001");
+                                                     var objRect2 = d3.select("#" + objId + "rect002");
+                                                     
+                                                     redrawResizeX = false;
+                                                     redrawResizeY = false;
+                                                     if(d3.event.x > defaultTableWidth){
+                                                         obj.attr("width", d3.event.x);
+                                                         objRect1.attr("width", d3.event.x);
+                                                         objRect2.attr("width", d3.event.x - marginRight);
+                                                         redrawResizeX = true;
+                                                     }
+                                                     
+                                                     if(d3.event.y > defaultTableHeight){
+                                                         obj.attr("height", d3.event.y);                                                     
+                                                         objRect1.attr("height", d3.event.y);                                                                                                     
+                                                         objRect2.attr("height", d3.event.y - marginBottom);
+                                                         redrawResizeY = true;
+                                                     } 
+                                                     
+                                                     if(redrawResizeX && redrawResizeY) {
+                                                         //d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
+														 d3.select(this).attr("points", getRedrawResizePath(d3.select(this).attr("points")
+                                                                                      , d3.event.x - resizeMarginRight
+                                                                                      , d3.event.y - resizeMarginBottom));
+                                                         
+                                                     }else{
+                                                         if(redrawResizeX){
+                                                             //d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
+															 //d3.select(this).attr("points", redrawResizePath(d3.select(this).attr("d")
+															 d3.select(this).attr("points", getRedrawResizePath(d3.select(this).attr("points")
+                                                                                          , d3.event.x - resizeMarginRight
+                                                                                          , -1)); //y축이 변경되지 않는 경우 -1로 값을 설정
+                                                         }
+                                                         
+                                                         if(redrawResizeY){
+                                                             //d3.select(this).attr("d", redrawResizePath(d3.select(this).attr("d")
+															 d3.select(this).attr("points", getRedrawResizePath(d3.select(this).attr("points")
+                                                                                          , -1
+                                                                                          , d3.event.y - resizeMarginBottom));
+                                                         }
+                                                     }
+                                                })
+                                     .on("end" , function(){
+                                                     //console.log("resize end...");
+                                                 });
+
+    
+	function redrawEdgePath(objEntity, objEdge)
+	{
+	    //redrawEdgePath(objId, d3.event.x + offsetX, d3.event.y + offsetY);
+		//console.log("x :=" + x + " , y :=" + y);
+		var datas = (objEdge.attr("points")).split(",");
+		datas[0] = parseFloat(objEntity.attr("x")) + parseFloat(objEntity.attr("width"));
+		datas[1] = ((parseFloat(objEntity.attr("height"))) / 2) + parseFloat(objEntity.attr("y"));
+		datas[2] = datas[0] + 20;
+		datas[3] = datas[1];
+		objEdge.attr("points", datas[0] + "," + datas[1] + "," + datas[2] + "," + datas[3]);
+	}
+	
+	function redrawEdgePath(objEntity, objEdge, edgeFlag)
+	{
+		if(edgeFlag == null) { edgeFlag = "0"; }
+		var datas;
+		switch(edgeFlag)
+		{
+			case "0":
+				var datas = (objEdge.attr("points")).split(",");
+				datas[0] = parseFloat(objEntity.attr("x")) + parseFloat(objEntity.attr("width"));
+				datas[1] = ((parseFloat(objEntity.attr("height"))) / 2) + parseFloat(objEntity.attr("y"));
+				datas[2] = datas[0] + 20;
+				datas[3] = datas[1];
+				objEdge.attr("points", datas[0] + "," + datas[1] + "," + datas[2] + "," + datas[3]);
+			    break;
+			case "1":
+			    break;
+			case "3":
+			    break;
+		}
+	    //redrawEdgePath(objId, d3.event.x + offsetX, d3.event.y + offsetY);
+		//console.log("x :=" + x + " , y :=" + y);
+	}
+	
+	function redrawRelationshipPath()
+	{
+	    
+	}
+	
+    function getRedrawResizePath(data, x, y)
+    {   
+	    var datas = data.split(",");
+		if(x != -1){
+		    datas[0] = x;  
+			datas[2] = x + 10;
+			datas[4] = x + 10;
+		}
+		
+		if(y != -1){
+		    datas[1] = y;
+			datas[3] = y;
+			datas[5] = y - 10;
+		}
+		var coords;
+		for(var i = 0; i < datas.length; i++){
+		    coords += datas[i] + ",";
+		}
+		return datas;
+    }
+    
+    function redrawRelationPath(start, middle, end)
+	{
+        return start.x + "," + start.y + "," + middle.x1 + "," + middle.y1 + "," +middle.x2 + "," + middle.y2 + "," + end.x + "," + end.y;
+    }
+	
+	function drawEdgePath(objEntity) 
+	{
+	    var edge = new Object();
+		edge.x = parseFloat(objEntity.attr("x")) + parseFloat(objEntity.attr("width"));
+		edge.y = parseFloat(objEntity.attr("y")) + (parseFloat(objEntity.attr("height")) / 2);
+		
+		d3.select("svg").append("polyline")
+		                .attr("id", objEntity.attr("id")+ "edge001")
+						.attr("fill", "none")
+						.attr("stroke", "#002C5F")
+						.attr("stroke-width", "2")
+						.attr("points", edge.x + "," + edge.y + "," + (edge.x + 20) + "," + edge.y);
+	}
+    
+    var onRelation = false;
+    var parentEntity = new Object();
+    var childEntity = new Object();
+    function clickEventHandler(d, i)
+	{
+		var selected = d3.select(this).attr("selected");
+        //d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("stroke-width", "3");
+		//var selected = d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("selected");
+		console.log("selected :=" + selected);
+		if(selected == "false") 
+		{
+		    d3.select(this).attr("selected", "true");			
+		    d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("stroke-width", "5").attr("stroke-dasharray", "4,4");
+			drawEdgePath(d3.select(this));			
+			
+		} else {
+		    d3.select(this).attr("selected", "false");
+		    d3.select(this).select("#" + d3.select(this).attr("id") + "rect001").attr("stroke-width", "1");
+		}  
+    }
+    
+    function initEvent()
+    {
+        dragMoveHandler(d3.select("#tbl001"));
+        dragMoveHandler(d3.select("#tbl002"));
+        dragResizeHandler(d3.select("#tbl001resize"));
+        dragResizeHandler(d3.select("#tbl002resize"));
+		
+        createTableLayout();
+        //d3.select("#tbl001").on("click", aClick);
+		
+        d3.select("#tbl001").on("click", clickEventHandler);
+        d3.select("#tbl002").on("click", clickEventHandler);
+        d3.select("#tbl003").on("click", clickEventHandler);
+    }
+	
+    function createTableLayout()
+	{
+        // create tbl svg tag and named id 
+        // svgm
+	    // svgm.id
+	    // svgm.x
+	    // svgm.y
+	    // svgm.width
+	    // svgm.height
+	    // svgm.relation_top_count
+	    // svgm.relation_left_count
+	    // svgm.relation_right_count
+	    // svgm.relation_bottom_count
+        d3.select("svg")
+            .append("svg")
+            .attr("id", "tbl003")
+            .attr("x", "400")
+            .attr("y", "10")            
+            .attr("width", "300")
+            .attr("height", "500")
+            .attr("relation", "0")
+			.attr("selected", "false")
+            //.on("click", clickEventHandler)
+            ;
+        
+        // append g tag
+        d3.select("#tbl003").append("g");
+        
+        // append table rect
+		// tablem
+		// tablem.id
+		// tablem.svgm_id
+		// tablem.width
+		// tablem.height
+		// tablem.fill
+		// tablem.stroke
+		// tablem.stroke_width
+		// tablem.logic_name
+		// tablem.physic_name
+		
+        d3.select("#tbl003").select("g")        
+            .append("rect")         
+            .attr("id", "tbl003rect001")
+            .attr("width", "300")
+            .attr("height", "500")
+            .attr("fill", "#002C5F")
+            .attr("stroke", "#2D6BB3")
+            .attr("stroke-width", "0");
+        
+        // append column rect
+		// columnm
+		// columnm.id
+		// columnm.x
+		// columnm.y
+		// columnm.width
+		// columnm.height
+		// columnm.fill
+		// columnm.logic_name
+		// columnm.physic_name
+        d3.select("#tbl003").select("g")        
+            .append("rect")         
+            .attr("id", "tbl003rect002")
+            .attr("x", "2")
+            .attr("y", "35")
+            .attr("width", "296")
+            .attr("height", "462")
+            .attr("fill", "#FFFFFF");
+        
+        // append table name text
+        d3.select("#tbl003").select("g")
+            .append("text")
+            .attr("x", "10")
+            .attr("y", "25")
+            .attr("fill", "#FFFFFF")
+            .text("공통코드 마스터");
+        
+        // append column name text
+        d3.select("#tbl003").select("g")
+            .append("text")
+            .attr("x", "10")
+            .attr("y", "55")
+            .attr("fill", "#000000")
+            .text("그룹코드");
+            
+        d3.select("#tbl003").select("g")
+            .append("text")
+            .attr("x", "10")
+            .attr("y", "85")
+            .attr("fill", "#000000")
+            .text("공통코드");
+            
+        d3.select("#tbl003").select("g")
+            .append("text")
+            .attr("x", "10")
+            .attr("y", "115")
+            .attr("fill", "#000000")
+            .text("공통코드명");
+            
+        d3.select("#tbl003").select("g")
+            .append("text")
+            .attr("x", "10")
+            .attr("y", "145")
+            .attr("fill", "#000000")
+            .text("시작일자");
+            
+        d3.select("#tbl003").select("g")
+            .append("text")
+            .attr("x", "10")
+            .attr("y", "175")
+            .attr("fill", "#000000")
+            .text("종료일자");
+            
+        // append resize icon 
+        //d3.select("#tbl003")
+        //    .append("path")
+        //    .attr("id","tbl003resize")
+        //    .attr("fill", "#002C5F")
+        //    .attr("d", "M286 495 L296 495 L296 485")
+        //    .attr("style", "cursor:nwse-resize");
+		
+		//polylined
+		//polylined.id
+		//polylined.svg_id
+		//polylined.fill
+		//polylined.points
+		//polylined.style
+		//♀
+        d3.select("#tbl003").append("polyline")
+                            .attr("id", "tbl003resize")
+                            .attr("fill", "#002C5F")
+                            .attr("points", "286,495,296,495,296,485")
+                            .attr("style", "cursor:nwse-resize");
+             
+        
+        dragMoveHandler(d3.select("#tbl003"));
+        dragResizeHandler(d3.select("#tbl003resize"));
+    }
+    </script>
+</head>
+<body>
+    <input type="button" value="0-to-N">
+	<input type="button" value="1-to-N">
+    <svg width="100%" height="4096">
+        <svg id="tbl001" x="10" y="10" width="300" height="500" selected="false">
+          <g>
+            <rect id="tbl001rect001" x="0" y="0" width="300" height="500" style="fill:rgb(0,44,95);" stroke="#2D6BB3" stroke-width="0"></rect>
+            <rect id="tbl001rect002" x="2" y="35" width="296" height="462" style="fill:rgb(255,255,255);"></rect>            
+            <text x="10" y="25" style="fill:rgb(255, 255, 255);">메뉴관리 마스터</text>
+            <text x="10" y="55" style="fill:rgb(0, 0, 0);">＋메뉴코드</text>
+            <text x="10" y="85" style="fill:rgb(0, 0, 0);">－메뉴명</text>
+            <text x="10" y="115" style="fill:rgb(0, 0, 0);">－상위메뉴코드</text>
+            <text x="10" y="145" style="fill:rgb(0, 0, 0);">－기본화면여부</text>
+            <text x="10" y="175" style="fill:rgb(0, 0, 0);">－정렬순서</text>
+            <text x="10" y="205" style="fill:rgb(0, 0, 0);">－삭제여부</text>
+            <text x="10" y="235" style="fill:rgb(0, 0, 0);">－최초등록일시</text>
+            <text x="10" y="265" style="fill:rgb(0, 0, 0);">－최초등록자ID</text>
+            <text x="10" y="295" style="fill:rgb(0, 0, 0);">－최종수정일시</text>
+            <text x="10" y="325" style="fill:rgb(0, 0, 0);">－최초수정자ID</text>
+          </g>
+          <polyline id="tbl001resize" style="cursor:nwse-resize;" fill="#002C5F" points="286,495,296,495,296,485"></polyline>
+        </svg>
+    </svg>  
+</body>
+<script type="text/javascript">
+    initEvent();
+</script>
+</html> 

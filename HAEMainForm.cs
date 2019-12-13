@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HAESticker
 {
-    public partial class HAEForm : Form
+    public partial class HAEMainForm : Form
     {
         private bool dragging;
         private bool resizing;
@@ -22,66 +22,23 @@ namespace HAESticker
         private int border = 4;
         private Size previousSize;
         private Point previousLocation ;
-        private Size previousFoldingSize;
+        //private Size previousFoldingSize;
         private Point offset;
         private bool maximizied = false;
         private bool holding = false;
         private bool folding = false;
-
         //private int MINIMUM_WIDTH = 300;
-        private int MINIMUM_HEIGHT = 26;
+        private int MINIMUM_HEIGHT = 26;        
 
-        //private int DEFAULT_WIDTH = 300;
-        //private int DEFAULT_HEIGHT = 200;
+        List<HAEForm> haeFormList = new List<HAEForm>();
         
-        private double OPACITY_RATE = 0.01;
-
-        public StickerVO stickerVO;
-
-        private HAEMainForm haeMainForm;
-
         HAESQLiteQuery haeSQLiteQuery = new HAESQLiteQuery();
 
-        public HAEForm()
+        public HAEMainForm()
         {
             InitializeComponent();
 
             initEventHandler();
-        }
-
-        public HAEForm(StickerVO vo)
-        {
-            InitializeComponent();
-
-            stickerVO = vo;
-
-            initEventHandler();
-        }
-
-        public HAEForm(StickerVO vo, HAEMainForm form)
-        {
-            InitializeComponent();
-
-            stickerVO = vo;
-
-            haeMainForm = form;
-
-            initEventHandler();
-        }
-
-
-        private void initSticker()
-        {
-            Width = stickerVO.FormWidth;
-            Height = stickerVO.FormHeight;
-            lblFormTitle.Text = stickerVO.Title;
-            rtbContents.Text = stickerVO.Contents;
-            tbarOpacity.Value = stickerVO.FormOpacity;
-            previousFoldingSize.Width = stickerVO.FormPrevWidth;
-            previousFoldingSize.Height = stickerVO.FormPrevHeight;
-            if(stickerVO.FoldYn == "Y") { folding = true; }
-
-            tbarOpacity.redrawTrackBall();
         }
 
         private void initEventHandler()
@@ -97,6 +54,64 @@ namespace HAESticker
             lblFormTitle.MouseDown += HAEForm_MouseDown;
             lblFormTitle.MouseUp += HAEForm_MouseUp;
             lblFormTitle.MouseMove += HAEForm_MouseMove;
+        }
+
+        private DataTable getStickerInfo()
+        {
+            DataTable dt = haeSQLiteQuery.getStickerInfo(null);
+            return dt;
+        }
+
+        private void openSticker()
+        {
+            DataTable dt = getStickerInfo();
+            for (int idx = 0; idx < dt.Rows.Count; idx++)
+            {
+                DataRow dr = dt.Rows[idx];
+                //이미 List<HAEForm>에 등록된 sticker는 다시 화면에 띄위지 않는다.
+                if (findOpenedSticker(Convert.ToString(dr["form_id"])))
+                {
+                }
+                else
+                {
+                    StickerVO stickerVO = new StickerVO();
+                    stickerVO.IudFlag = "U";
+                    stickerVO.FormId = Convert.ToString(dr["form_id"]);
+                    stickerVO.PosX = Convert.ToInt32(dr["pos_x"]);
+                    stickerVO.PosY = Convert.ToInt32(dr["pos_y"]);
+                    stickerVO.FormWidth = Convert.ToInt32(dr["form_width"]);
+                    stickerVO.FormHeight = Convert.ToInt32(dr["form_height"]);
+                    stickerVO.FormOpacity = Convert.ToInt32(dr["form_opacity"]);
+                    stickerVO.FormPrevWidth = Convert.ToInt32(dr["prev_form_width"]);
+                    stickerVO.FormPrevHeight = Convert.ToInt32(dr["prev_form_height"]);
+                    stickerVO.Title = Convert.ToString(dr["title"]);
+                    stickerVO.Contents = Convert.ToString(dr["contents"]);
+                    stickerVO.FoldYn = Convert.ToString(dr["fold_yn"]);
+
+                    HAEForm h = new HAEForm(stickerVO, this);
+                    //중복된 sticker를 다시 발행하지 않기 위해 List<HAEForm>에 등록
+                    haeFormList.Add(h);
+                    h.StartPosition = FormStartPosition.Manual;
+                    h.Location = new Point(stickerVO.PosX, stickerVO.PosY);
+                    h.Show();
+                    h.Focus();
+                }
+            }
+        }
+
+        private bool findOpenedSticker(string formId)
+        {
+            bool result = false;
+            for(int idx = 0; idx < haeFormList.Count; idx++)
+            {
+                HAEForm h = haeFormList[idx] as HAEForm;
+                if(h.stickerVO.FormId == formId)
+                {
+                    result = true;
+                    break;
+                }
+            }
+            return result;
         }
 
         private void HAEForm_MouseDown(object sender, MouseEventArgs e)
@@ -268,13 +283,10 @@ namespace HAESticker
                     resizingRight = false;
                 }
             }
-
-            tbarOpacity.redrawTrackBall();
         }
 
         private void pbBtnClose_Click(object sender, EventArgs e)
         {
-            haeMainForm.removeSticker(stickerVO.FormId);
             this.Close();
         }
 
@@ -292,14 +304,11 @@ namespace HAESticker
                 pbBtnExpand.Image = Properties.Resources.btnOriginal;
                 maximizied = true;
             }
-            tbarOpacity.redrawTrackBall();
         }
 
         private void pbBtnHide_Click(object sender, EventArgs e)
         {
-            //최소화 버튼은 테스트 해보니 불 필요해 보임, 이보다 폰트 변경 기능을 적용하는게 나을 듯
-            //this.WindowState = FormWindowState.Minimized;
-            //tbarOpacity.redrawTrackBall();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void pbBtnClose_MouseHover(object sender, EventArgs e)
@@ -351,219 +360,79 @@ namespace HAESticker
 
         private void pbLogo_MouseHover(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.Default;
-            if (holding)
-            {
-                pbLogo.Image = Properties.Resources.btnHoldingHover;
-            }
-            else
-            {
-                pbLogo.Image = Properties.Resources.btnHolderHover;
-            }
-        }
-
-        private void pbLogo_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (holding)
-            {
-                pbLogo.Image = Properties.Resources.btnHolder;
-                holding = false;
-            }
-            else
-            {
-                pbLogo.Image = Properties.Resources.btnHolding;
-                holding = true;
-            }
-        }
-
-        private void pbLogo_MouseLeave(object sender, EventArgs e)
-        {
-            if (holding)
-            {
-                pbLogo.Image = Properties.Resources.btnHolding;
-            }
-            else
-            {
-                pbLogo.Image = Properties.Resources.btnHolder;
-            }
-        }
-
-        private void lblFormTitle_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void lblFormTitle_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Left)
-            {
-                foldAndUnfoldSticker();
-            }
-            else
-            {
-                HAETitlePopup titlePopup = new HAETitlePopup();
-                titlePopup.Title = lblFormTitle.Text.ToString();
-                if(titlePopup.ShowDialog() == DialogResult.OK)
-                {
-                    lblFormTitle.Text = titlePopup.title;
-                }
-            }
-        }
-        
-        private void tbOpacity_MouseHover(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-        }
-
-        private void tbarOpacity_MouseLeave(object sender, EventArgs e)
-        {
-        }
-
-        private void tbarOpacity_ValueChanged(object sender, EventArgs e)
-        {
-            this.Opacity = tbarOpacity.Value * OPACITY_RATE;
-        }
-
-        private void pbTrash_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbTrash_MouseDown(object sender, MouseEventArgs e)
-        {
-            HAEFormPopup popup = new HAEFormPopup();
-            if(popup.ShowDialog() == DialogResult.OK)
-            {
-                stickerVO.IudFlag = "D";
-                saveStickerInfo();
-            }
-        }
-
-        private void pbTrash_MouseHover(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.Default;
-            pbTrash.Image = Properties.Resources.btnTrashHover;
-        }
-
-        private void pbTrash_MouseLeave(object sender, EventArgs e)
-        {
-            pbTrash.Image = Properties.Resources.btnTrash;
-        }
-
-        private void tbarOpacity_ValueChangeEvent(object sender, EventArgs e)
-        {
-            this.Opacity = tbarOpacity.Value * OPACITY_RATE;
-        }
-
-        private void HAEForm_Activated(object sender, EventArgs e)
-        {            
-        }
-
-        private void HAEForm_Deactivate(object sender, EventArgs e)
-        {
         }
 
         private void HAEForm_Load(object sender, EventArgs e)
         {
-            initSticker();
         }
 
-        public void saveStickerInfo()
+        private void lblSearch_Click(object sender, EventArgs e)
         {
-            switch (stickerVO.IudFlag)
+            openSticker();
+        }
+
+        private void HAEMainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            saveTotSticker();
+        }
+
+        private void saveTotSticker()
+        {
+            for(int idx = 0; idx < haeFormList.Count; idx++)
             {
-                case "I":
-                    insertStickerInfo();
-                    break;
-                case "U":
-                    updateStickerInfo();
-                    break;
-                case "D":
-                    deleteStickerInfo();
-                    break;
-                default:
-                    break;
+                HAEForm h = haeFormList[idx] as HAEForm;
+                h.saveStickerInfo();
             }
         }
 
-        private void insertStickerInfo()
+        public void removeSticker(string formId)
         {
-            HAESQLiteVO vo = new HAESQLiteVO();
-            vo.set("form_id", stickerVO.FormId);
-            vo.set("pos_x", this.Location.X);
-            vo.set("pos_y", this.Location.Y);
-            vo.set("form_width", this.Width);
-            vo.set("form_height", this.Height);
-            vo.set("prev_form_width", this.Width);
-            vo.set("prev_form_height", this.Height);
-            vo.set("form_opacity", tbarOpacity.Value);
-            vo.set("title", lblFormTitle.Text);
-            vo.set("contents", rtbContents.Text);
-            vo.set("contents_rtf", rtbContents.Text);
-            vo.set("fold_yn", "N");
-            vo.set("hidden_yn", "N");
-            vo.set("rgst_dt", DateTime.Today.ToLongDateString());
-            vo.set("updt_dt", DateTime.Today.ToLongDateString());
-
-            if (haeSQLiteQuery.insertStickerInfo(vo) > 0)
+            for (int idx = haeFormList.Count - 1; idx >= 0; idx--)
             {
-                stickerVO.IudFlag = "U";
+                HAEForm h = haeFormList[idx] as HAEForm;
+                if (h.stickerVO.FormId == formId)
+                {
+                    haeFormList.Remove(h);
+                }
             }
         }
 
-        private void updateStickerInfo()
+        private void openNewSticker()
         {
-            HAESQLiteVO vo = new HAESQLiteVO();
-            vo.set("form_id", stickerVO.FormId);
-            vo.set("pos_x", this.Location.X);
-            vo.set("pos_y", this.Location.Y);
-            vo.set("form_width", this.Width);
-            vo.set("form_height", this.Height);
-            vo.set("prev_form_width", this.Width);
-            vo.set("prev_form_height", previousFoldingSize.Height);
-            vo.set("form_opacity", tbarOpacity.Value);
-            vo.set("title", lblFormTitle.Text);
-            vo.set("contents", rtbContents.Text);
-            vo.set("contents_rtf", rtbContents.Text);
-            vo.set("fold_yn", (folding)? "Y":"N");
-            vo.set("hidden_yn", "N");
-            vo.set("updt_dt", DateTime.Today.ToLongDateString());
-            haeSQLiteQuery.updateStickerInfo(vo);
+            StickerVO stickerVO = new StickerVO();
+            stickerVO.IudFlag = "I";
+            stickerVO.FormId = DateTime.Now.ToString("yyyyMMddhhmmss");
+            stickerVO.Title = "새메모";
+            stickerVO.FormWidth = 200;
+            stickerVO.FormHeight = 200;
+            stickerVO.FormOpacity = 100;
+            HAEForm h = new HAEForm(stickerVO, this);
+            haeFormList.Add(h);
+            h.StartPosition = FormStartPosition.CenterScreen;
+            h.Location = new Point(stickerVO.PosX, stickerVO.PosY);
+            h.Show();
+            h.Focus();
         }
 
-        private void deleteStickerInfo()
+        private void label1_Click(object sender, EventArgs e)
         {
-            HAESQLiteVO vo = new HAESQLiteVO();
-            vo.set("form_id", stickerVO.FormId);
-            vo.set("del_yn", "Y");
-            vo.set("del_dt", DateTime.Today.ToLongDateString());
-            vo.set("updt_dt", DateTime.Today.ToLongDateString());
-            if(haeSQLiteQuery.deleteStickerInfo(vo) > 0)
-            {
-                this.Close();
-            }
+            openNewSticker();
         }
 
-        public void foldAndUnfoldSticker()
+        private void label3_Click(object sender, EventArgs e)
         {
-            if (folding)
-            {
-                //this.Width = previousFoldingSize.Width;
-                this.Height = previousFoldingSize.Height;
-                folding = false;
-            }
-            else
-            {
-                previousFoldingSize = this.Size;
-                //this.Width = MINIMUM_WIDTH;
-                this.Height = MINIMUM_HEIGHT;
-                folding = true;
-            }
+
         }
 
-        public void foldAndUnfoldSticker(bool foldYn)
+        private void lblFoldAndUnfold_Click(object sender, EventArgs e)
         {
-            folding = foldYn;
-            foldAndUnfoldSticker();
+            for (int idx = 0; idx < haeFormList.Count; idx++)
+            {
+                HAEForm h = haeFormList[idx] as HAEForm;
+                folding = !folding;
+                h.stickerVO.FoldYn = (folding)?"Y":"N";
+                h.foldAndUnfoldSticker(folding);
+            }
         }
     }
 }

@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pbTrackBall = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,24 +37,10 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrackBall)).BeginInit();
+            this.pbTrackBall = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrackBall)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbTrackBall
-            // 
-            this.pbTrackBall.Image = global::HAESticker.Properties.Resources.btnTrackBall;
-            this.pbTrackBall.Location = new System.Drawing.Point(-1, 0);
-            this.pbTrackBall.Margin = new System.Windows.Forms.Padding(0);
-            this.pbTrackBall.Name = "pbTrackBall";
-            this.pbTrackBall.Size = new System.Drawing.Size(8, 16);
-            this.pbTrackBall.TabIndex = 0;
-            this.pbTrackBall.TabStop = false;
-            this.pbTrackBall.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbTrackBall_MouseDown);
-            this.pbTrackBall.MouseLeave += new System.EventHandler(this.pbTrackBall_MouseLeave);
-            this.pbTrackBall.MouseHover += new System.EventHandler(this.pbTrackBall_MouseHover);
-            this.pbTrackBall.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbTrackBall_MouseMove);
-            this.pbTrackBall.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbTrackBall_MouseUp);
             // 
             // dataGridView1
             // 
@@ -148,6 +133,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // pbTrackBall
+            // 
+            this.pbTrackBall.Image = global::HAESticker.Properties.Resources.btnTrackBall;
+            this.pbTrackBall.Location = new System.Drawing.Point(-1, 0);
+            this.pbTrackBall.Margin = new System.Windows.Forms.Padding(0);
+            this.pbTrackBall.Name = "pbTrackBall";
+            this.pbTrackBall.Size = new System.Drawing.Size(8, 16);
+            this.pbTrackBall.TabIndex = 0;
+            this.pbTrackBall.TabStop = false;
+            this.pbTrackBall.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbTrackBall_MouseDown);
+            this.pbTrackBall.MouseLeave += new System.EventHandler(this.pbTrackBall_MouseLeave);
+            this.pbTrackBall.MouseHover += new System.EventHandler(this.pbTrackBall_MouseHover);
+            this.pbTrackBall.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbTrackBall_MouseMove);
+            this.pbTrackBall.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbTrackBall_MouseUp);
+            // 
             // HAETestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -159,9 +159,10 @@
             this.Controls.Add(this.pbTrackBall);
             this.Name = "HAETestForm";
             this.Text = "HAETestForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HAETestForm_FormClosing);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.HAETestForm_Paint);
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrackBall)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrackBall)).EndInit();
             this.ResumeLayout(false);
 
         }

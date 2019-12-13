@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HAEMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HAEMainForm.Designer.cs">
+      <DependentUpon>HAEMainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HAESQLiteQuery.cs" />
     <Compile Include="HAETitlePopup.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VO\StickerVO.cs" />
+    <EmbeddedResource Include="HAEMainForm.resx">
+      <DependentUpon>HAEMainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HAEForm.resx">
       <DependentUpon>HAEForm.cs</DependentUpon>
     </EmbeddedResource>

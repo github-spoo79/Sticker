@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <sql id="getStickerInfo">
+    <![CDATA[
+    SELECT form_id
+         , pos_x
+         , pos_y
+         , form_width
+         , form_height
+         , prev_form_width
+         , prev_form_height
+         , form_opacity
+         , title
+         , contents_rtf
+         , contents
+         , del_yn
+         , del_dt
+         , hidden_yn
+         , fold_yn
+         , rgst_dt
+         , updt_dt
+    FROM   sticker
+    WHERE  del_yn = 'N'
+    ]]>
+  </sql>
+  <sql id="getStickerInfoByFormId">
+    <![CDATA[
+    SELECT form_id
+         , pos_x
+         , pos_y
+         , form_width
+         , form_height
+         , prev_form_width
+         , prev_form_height
+         , form_opacity
+         , title
+         , contents_rtf
+         , contents
+         , del_yn
+         , del_dt
+         , hidden_yn
+         , fold_yn
+         , rgst_dt
+         , updt_dt
+    FROM   sticker
+    WHERE  del_yn = 'N'
+    AND    form_id = @form_id
+    ]]>
+  </sql>
+  <sql id="insertStickerInfo">
+    <![CDATA[
+    INSERT INTO sticker
+              ( form_id
+              , pos_x
+              , pos_y
+              , form_width
+              , form_height
+              , prev_form_width
+              , prev_form_height
+              , form_opacity
+              , title
+              , contents_rtf
+              , contents
+              , hidden_yn
+              , fold_yn
+              , rgst_dt
+              , updt_dt)
+    VALUES    ( @form_id
+              , @pos_x
+              , @pos_y
+              , @form_width
+              , @form_height
+              , @prev_form_width
+              , @prev_form_height
+              , @form_opacity
+              , @title
+              , @contents_rtf
+              , @contents
+              , @hidden_yn
+              , @fold_yn
+              , @rgst_dt
+              , @updt_dt)
+    ]]>
+  </sql>
+  <sql id="updateStickerInfo">
+    <![CDATA[
+    UPDATE sticker
+    SET    pos_x            = @pos_x
+         , pos_y            = @pos_y
+         , form_width       = @form_width
+         , form_height      = @form_height
+         , prev_form_width  = @prev_form_width
+         , prev_form_height = @prev_form_height
+         , form_opacity     = @form_opacity
+         , title            = @title
+         , contents_rtf     = @contents_rtf
+         , contents         = @contents
+         , hidden_yn        = @hidden_yn
+         , fold_yn          = @fold_yn
+         , updt_dt          = @updt_dt
+    WHERE  form_id          = @form_id
+    ]]>
+  </sql>
+  <sql id="deleteStickerInfo">
+    <![CDATA[
+    UPDATE sticker
+    SET    del_yn  = 'Y'
+         , del_dt  = @del_dt
+         , updt_dt = @updt_dt
+    WHERE  form_id = @form_id
+    ]]>
+  </sql>
+  <sql id="truncateStickerInfo">
+    <![CDATA[
+    DELETE FROM sticker WHERE form_id = @form_id
+    ]]>
+  </sql>
+</root>

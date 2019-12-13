@@ -219,6 +219,7 @@
             this.lblCancel.TabIndex = 1;
             this.lblCancel.Text = "취소";
             this.lblCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCancel.Click += new System.EventHandler(this.lblCancel_Click);
             this.lblCancel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblCancel_MouseDown);
             this.lblCancel.MouseLeave += new System.EventHandler(this.lblCancel_MouseLeave);
             this.lblCancel.MouseHover += new System.EventHandler(this.lblCancel_MouseHover);

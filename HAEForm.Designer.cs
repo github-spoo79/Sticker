@@ -71,9 +71,11 @@
             // 
             // rtbContents
             // 
+            this.rtbContents.BackColor = System.Drawing.Color.White;
             this.rtbContents.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbContents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtbContents.Location = new System.Drawing.Point(0, 0);
+            this.rtbContents.Margin = new System.Windows.Forms.Padding(1);
             this.rtbContents.Name = "rtbContents";
             this.rtbContents.Size = new System.Drawing.Size(294, 248);
             this.rtbContents.TabIndex = 0;
@@ -210,6 +212,7 @@
             // 
             // tblSticker
             // 
+            this.tblSticker.BackColor = System.Drawing.Color.White;
             this.tblSticker.ColumnCount = 3;
             this.tblSticker.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tblSticker.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -282,7 +285,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(91)))), ((int)(((byte)(157)))));
             this.ClientSize = new System.Drawing.Size(300, 300);
             this.Controls.Add(this.tblSticker);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

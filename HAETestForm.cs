@@ -309,5 +309,10 @@ namespace HAESticker
             h.Show();
             h.Focus();
         }
+
+        private void HAETestForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+        }
     }
 }
