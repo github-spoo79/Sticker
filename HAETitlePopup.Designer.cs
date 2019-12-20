@@ -52,7 +52,7 @@
             // 
             // tblFormPopup
             // 
-            this.tblFormPopup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(91)))), ((int)(((byte)(157)))));
+            this.tblFormPopup.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.tblFormPopup.ColumnCount = 3;
             this.tblFormPopup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 2F));
             this.tblFormPopup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -73,7 +73,7 @@
             // 
             // pnlFormPopupTitl
             // 
-            this.pnlFormPopupTitl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(91)))), ((int)(((byte)(157)))));
+            this.pnlFormPopupTitl.BackColor = System.Drawing.Color.Transparent;
             this.pnlFormPopupTitl.Controls.Add(this.lblTitle);
             this.pnlFormPopupTitl.Controls.Add(this.pnlFormPopupBtn);
             this.pnlFormPopupTitl.Dock = System.Windows.Forms.DockStyle.Top;

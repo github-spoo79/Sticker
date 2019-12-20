@@ -16,7 +16,7 @@ namespace HAESticker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HAEMainForm());
+            Application.Run(new HAETestForm());
         }
     }
 }
